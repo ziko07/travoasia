@@ -1,28 +1,84 @@
 <%= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) } %>
-
+<% content_for :title_header do %>
+    <h1>
+      <%=  'Manage Featured Listings' %>
+    </h1>
+<% end %>
 <div class="left-navi-section">
-  <h2>Manage Featured Listings</h2>
   <div class="featured-listing">
     <div class="featured-request-header">
        Request For Featured listings shows
     </div>
     <div class="request-list">
-      <table id="admin_members_list">
-        <thead>
-        <tr>
-          <th>User</th>
-          <th>Listing</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
+      <% if @featured_requests.present? %>
+          <table id="admin_members_list">
+            <thead>
+            <tr>
+              <th>User</th>
+              <th>Listing</th>
+              <th>Description</th>
+              <th colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @featured_requests.each do |feature_request|  %>
+                <tr>
+                  <td><%= feature_request.listing.author.given_name %></td>
+                  <td><%= feature_request.listing.title %></td>
+                  <td><%= feature_request.description %></td>
+                  <td>
+                    <%= link_to accept_feature_request_admin_community_path(@current_community,feature_request_id: feature_request.id,), title: 'Accept' do %>
+                        <i class="icon-ok"></i>
+                  <% end %>
+                  </td>
+
+                  <td>
+                    <%= link_to ban_feature_request_admin_community_path(@current_community,feature_request_id: feature_request.id), title: 'Decline' do %>
+                        <i class="icon-remove"></i>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% else %>
+      No Featured Request
+      <% end %>
     </div>
   </div>
+
+  <div class="listing-list">
+    <div class="listing-header">
+      List of Featured Listing
+    </div>
+    <div class="featured-list">
+      <% if @listings.present? %>
+          <table id="admin_members_list">
+            <thead>
+            <tr>
+              <th>User</th>
+              <th>Listing</th>
+              <th colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @listings.each do |listing|  %>
+                <tr>
+                  <td><%= listing.author.given_name %></td>
+                  <td><%= listing.title %></td>
+                  <td>
+                    <%= link_to remove_featured_listing_admin_community_path(@current_community,listing_id: listing.id), title: 'Remove' do %>
+                        <i class="icon-remove"></i>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% else %>
+          No Featured Request
+      <% end %>
+    </div>
+  </div>
+
 </div>

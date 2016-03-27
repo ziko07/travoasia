@@ -72,4 +72,5 @@
 //= require transaction
 //= require listing_form
 //= require radio_buttons
+//= require remodal.min
 //= require_self

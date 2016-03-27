@@ -1,0 +1,61 @@
+<div class="template-travoasia page-community responsive components-built">
+  <div class="hero-container" style="">
+    <div class="layout-centered-content">
+
+      <h1 class="entry-title">Our Community of Professionals</h1>
+
+      <h2><p>Highly vetted industry professionals ready to help you with your project.</p>
+      </h2>
+      <div class="button-container" style="display:none;">
+        <a href="#" class="button-1 link-talent-form">REQUEST A PROPOSAL</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section layout-centered-content" style="padding-top:15px;">
+
+    <div class="cf">
+      <div class="top-right-social-buttons">
+        <span class="share-count">375 shares</span>
+        <a href="http://www.twitter.com/share?url=http://www.studiotime.io/community/" class="twitter-share-button" data-share-message="Check out our community of professionals on http://www.studiotime.io/community/">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.studiotime.io/community/" class="fb-share-button" data-share-url="http://www.studiotime.io/community/">Facebook</a>
+      </div>
+    </div>
+
+    <ul class="block-grid cf">
+          <% @site_communities.all.each do |site_community|  %>
+              <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
+                <a href="/engineers" class="">
+                  <span class="label-center thin"><%= site_community.designation %></span>
+                  <span class="hover-content">Find the best emerging engineers to work with and also discover those who are top in the industry.</span>
+                </a></li>
+          <% end %>
+    </ul>
+
+    <div class="text-centered">...and many more coming soon!</div>
+
+  </div>
+
+  <div class="featured-artist-hero-container">
+    <div class="layout-centered-content">
+      <a href="#" class="button-play video-modal-link" data-video-id="xlEHzUt2KQI" data-video-end="88">Play</a>
+
+      <h1 class="entry-title">Launching Music Careers</h1>
+
+      <h2>See How Studiotime Helps Emerging Artists Like Danny Seth</h2>
+    </div>
+  </div>
+
+  <div class="section layout-centered-content">
+
+    <div class="contact-us-container">
+      <h1>Want to be featured on Studiotime?</h1>
+      Increase your exposure and become part of the hottest online music community.
+      <div class="button-container">
+        <a class="button-1" href="https://listings.studiotime.io/en/user_feedbacks/new">CONTACT US</a>
+      </div>
+    </div>
+
+  </div>
+</div>

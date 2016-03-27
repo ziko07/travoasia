@@ -1,0 +1,55 @@
+<%= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) } %>
+<% content_for :title_header do %>
+    <h1>
+      <%= 'Manage Site Communities' %>
+    </h1>
+<% end %>
+<div class="left-navi-section">
+  <div class="new-communities">
+    <%= link_to 'Add New Community', new_admin_site_community_path, class: 'new-listing-link' %>
+  </div>
+  </br>
+  <div style="clear: both"></div>
+  <div class="community-listing">
+    <% if @site_communities.present? %>
+        <div class="community-list">
+          <table id="admin_members_list">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Address</th>
+                <th>Image</th>
+                <th>About</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @site_communities.each do |site_community| %>
+                <tr>
+                    <td><%= site_community.name %></td>
+                    <td><%= site_community.designation %></td>
+                    <td><%= site_community.address %></td>
+                    <td><%= image_tag(site_community.image.url) %></td>
+                  <td><%= raw site_community.about %></td>
+                  <td>
+                    <%= link_to edit_admin_site_community_path(site_community), title: 'Accept' do %>
+                        <i class="icon-pencil"></i>
+                    <% end %>
+                  </td>
+
+                  <td>
+                    <%= link_to site_community, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' do %>
+                        <i class="icon-remove"></i>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+    <% else %>
+    No site communities
+    <% end %>
+
+  </div>
+  </div>

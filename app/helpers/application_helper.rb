@@ -623,10 +623,18 @@ module ApplicationHelper
 
       {
           :topic => :manage,
-          :text => 'Approval For Featured Listings',
+          :text => 'Featured Listings',
           :icon_class => icon_class("icon-star"),
           :path => featured_listing_admin_community_path(@current_community),
           :name => "manage_feature_listing"
+      },
+
+      {
+          :topic => :manage,
+          :text => 'Site Community',
+          :icon_class => icon_class("icon-star"),
+          :path => admin_site_communities_path,
+          :name => "manage_site_community"
       },
 
       {
@@ -924,7 +932,7 @@ module ApplicationHelper
   end
 
   def with_stylesheet_url(community, &block)
-    stylesheet_url = if community.has_custom_stylesheet?
+    stylesheet_url = if !community.has_custom_stylesheet?
       stylesheet = community.custom_stylesheet_url
       is_uri?(stylesheet)  ? stylesheet : "/assets/#{stylesheet}"
     else
@@ -950,6 +958,10 @@ module ApplicationHelper
 
   def sort_link_direction(column)
     params[:sort].eql?(column) && params[:direction].eql?("asc") ? "desc" : "asc"
+  end
+
+  def is_feature_request(listing)
+    FeaturedRequest.find_by_listing_id(listing.id).present?
   end
 
   # Give an array of translation keys you need in JavaScript. The keys will be loaded and ready to be used in JS

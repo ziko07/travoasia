@@ -7,7 +7,13 @@ class HomepageController < ApplicationController
   VIEW_TYPES = ["grid", "list", "map"]
 
   def index
+    @featured_listing = Listing.all.where(is_featured: true)
+   render layout: 'landing'
+  end
 
+  def community
+    @site_communities = Admin::SiteCommunity.all
+    render layout: 'landing'
   end
 
   def listing

@@ -34,10 +34,45 @@ class Admin::ListingShapesController < ApplicationController
 
   def featured_listing
     @selected_left_navi_link = "manage_feature_listing"
+    @featured_requests = FeaturedRequest.all
+    @listings = Listing.where(is_featured: true)
   end
 
-  def make_featured
+  def accept_feature_request
+    featured_listing = FeaturedRequest.find_by_id(params[:feature_request_id])
+      listing = Listing.find_by_id(featured_listing.listing_id)
+      listing.is_featured = true
+      if listing.save
+        featured_listing.destroy
+        flash[:notice] = 'Listing is Added as featured listing'
+        render action: 'featured_listing'
+      else
+        flash[:error] = 'Something is worng Please try latter'
+        render action: 'featured_listing'
+      end
+  end
 
+  def  ban_feature_request
+    featured_listing = FeaturedRequest.find_by_id(params[:feature_request_id])
+    if featured_listing.destroy
+      flash[:notice] = 'Request is Declined Successgully'
+      render action: 'featured_listing'
+    else
+      flash[:error] = 'Something is worng Please try latter'
+      render action: 'featured_listing'
+    end
+  end
+
+  def remove_featured_listing
+    listing = Listing.find_by_id(params[:listing_id])
+    listing.is_featured = false
+    if listing.save
+      flash[:notice] = 'Listing is Deleted from featured listing'
+      render action: 'featured_listing'
+    else
+      flash[:error] = 'Something is worng Please try latter'
+      render action: 'featured_listing'
+    end
   end
 
   def edit

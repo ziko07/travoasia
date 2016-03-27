@@ -1,1 +1,223 @@
-<%= link_to 'listing', '/browse_listings' %>
+<%= render partial: 'layouts/global_header' %>
+<div class="template-travoasia page-landing responsive">
+  <div class="hero-container">
+    <div class="layout-centered-content">
+
+      <video autoplay loop poster="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/bg.video.still.jpg" id="bgvid">
+        <source src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/video/bg.dj.mp4" type="video/mp4">
+        <source src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/video/bg.dj.webm" type="video/webm">
+        <source src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/video/bg.dj.ogv" type="video/ogv">
+        Your browser doesn't support HTML5 video. Here's a <a href="#">link</a> to download the video.
+      </video>
+
+      <h1 class="entry-title">Book Studiotime Anywhere</h1>
+
+      <h2>The largest online community to rent music studios</h2>
+
+      <form class="cf" action="https://listings.studiotime.io/" method="GET">
+        <div class="left-input-container cf">
+
+          <input type="text" name="q" placeholder="Where would you like to make music?"/>
+
+          <div class="dropdown" onclick="void(0)">
+            <span class="current-value">Los Angeles</span>
+            <span class="dd-icon">v</span>
+            <ul>
+              <li><a href="#" data-value="los-angeles">Los Angeles</a></li>
+              <li><a href="#" data-value="northern-california">Northern California</a></li>
+              <li><a href="#" data-value="new-york-city">New York</a></li>
+              <li><a href="#" data-value="nashville">Nashville</a></li>
+              <li><a href="#" data-value="miami">Miami</a></li>
+              <li><a href="#" data-value="london">London</a></li>
+              <li><a href="#" data-value="berlin">Berlin</a></li>
+              <li><a href="#" data-value="paris">Paris</a></li>
+              <li><a href="#" data-value="copenhagen">Copenhagen</a></li>
+              <li><a href="#" data-value="hong-kong">Hong Kong</a></li>
+              <li><a href="#" data-value="tokyo">Tokyo</a></li>
+              <li><a href="#" data-value="other">Other</a></li>
+            </ul>
+          </div>
+
+        </div>
+        <input type="submit" class="floatright button-1" value="Find Studios"/>
+        <input type="hidden" name="category" value="los-angeles"/>
+        <input type="hidden" name="view" value="grid"/>
+      </form>
+    </div>
+  </div>
+
+  <div class="section layout-centered-content">
+
+    <h1 class="section-header">Explore Studios</h1>
+
+    <h2 class="subheader">Find studios in your city, or explore unique ones around the world.</h2>
+    <ul class="block-grid cf">
+      <li class="double-wide" style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/city.la.jpg) center center no-repeat; background-size:cover;">
+        <a href="https://listings.studiotime.io/en?category=los-angeles&view=grid">
+          <span class="label-center">Los Angeles</span>
+        </a>
+      </li>
+      <li class="no-right-margin" style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/city.ny.jpg) center center no-repeat; background-size:cover;">
+        <a href="https://listings.studiotime.io/en?category=new-york-city&view=grid">
+          <span class="label-center">New York</span>
+        </a>
+      </li>
+      <li style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/city.london.jpg) center center no-repeat; background-size:cover;">
+        <a href="https://listings.studiotime.io/en?category=london&view=grid">
+          <span class="label-center">London</span>
+        </a>
+      </li>
+      <li style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/city.paris.jpg) center center no-repeat; background-size:cover;">
+        <a href="https://listings.studiotime.io/en?category=paris&view=grid">
+          <span class="label-center">Paris</span>
+        </a>
+      </li>
+      <li class="no-right-margin" style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/city.berlin.jpg) center center no-repeat; background-size:cover;">
+        <a href="https://listings.studiotime.io/en?category=berlin&view=grid">
+          <span class="label-center">Berlin</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="text-centered paddingTop20">
+      <!--<div class="graphic-compass">graphic</div>-->
+      <a class="" href="https://listings.studiotime.io/">Explore more studios around the world</a>
+    </div>
+
+  </div>
+
+  <div class="section layout-centered-content">
+
+    <h1 class="section-header">Featured Studios</h1>
+    <ul class="block-grid cf">
+      <% @featured_listing.each do |listing| %>
+          <%= render 'featured_listing', listing: listing %>
+      <% end %>
+    </ul>
+
+    <div class="text-centered paddingTop20">
+      <a class="" href="https://listings.studiotime.io/">See all of our studios</a>
+    </div>
+
+  </div>
+
+  <div class="featured-artist-hero-container">
+    <div class="layout-centered-content">
+      <a href="#" class="button-play video-modal-link" data-video-id="xlEHzUt2KQI" data-video-end="88">Play</a>
+
+      <h1 class="entry-title">Launching Music Careers</h1>
+
+      <h2>See How Studiotime Helps Emerging Artists Like Danny Seth</h2>
+    </div>
+  </div>
+
+
+  <div class="section layout-centered-content">
+
+    <h1 class="section-header">Our Community</h1>
+    <ul class="block-grid cf">
+      <li style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.staff.engineer.jpg) center center no-repeat; background-size:cover;">
+        <a href="/engineers" class="">
+          <span class="label-center">Engineers</span>
+          <span class="hover-content">Find the best emerging engineers to work with and also discover those who are top in the industry.</span>
+        </a></li>
+      <li style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.staff.artist.jpg) center center no-repeat; background-size:cover;">
+        <a href="/artists" class="">
+          <span class="label-center">Artists</span>
+          <span class="hover-content">Find award-winning artists ready to work on your project or book them for a live show. </span>
+        </a></li>
+      <li class="no-right-margin" style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.staff.producer.jpg) center center no-repeat; background-size:cover;">
+        <a href="/producers" class="">
+          <span class="label-center">Producers</span>
+          <span class="hover-content">Shining the light on producers for once and for all. Find the best producers to work with.</span>
+        </a></li>
+    </ul>
+
+    <div class="button-container" style="padding:20px; text-align:center;">
+      <a href="/community" class="button-1">VIEW COMMUNITY</a>
+    </div>
+
+  </div>
+
+  <div class="section-features" style="display:none;">
+    <div class="layout-centered-content cols-2 cf">
+      <div class="left-column">
+        <h2>How It Works</h2>
+        Studiotime is a platform for musicians to find, book, and make music in studios near them. Studio time has never
+        been easier to find and book. Make beats in a studio around you!
+        <div class="button-container">
+          <a href="https://listings.studiotime.io/en/infos/how_to_use" class="button-1">LEARN MORE</a>
+        </div>
+
+        <div class="store-links">
+          <a href="https://play.google.com/store/apps/details?id=com.phonegap.studiotime&hl=en" class="graphic-google-play-black">Google
+            Play Store</a> &nbsp;
+          <a href="https://itunes.apple.com/us/app/studiotime.io/id991200639" class="graphic-itunes-black">iTunes
+            Store</a>
+        </div>
+      </div>
+      <div class="right-column" style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/mobile.screenshot.jpg) center center no-repeat; background-size:cover;">&nbsp;</div>
+    </div>
+  </div>
+
+  <div class="section layout-centered-content">
+
+    <h1 class="section-header">As seen on</h1>
+    <ul class="seen-on-list">
+      <li class="hypebeast">Hypebeast</li>
+      <li class="bbc">BBC</li>
+      <li class="fader">Fader</li>
+      <li class="product-hunt">Product Hunt</li>
+    </ul>
+
+  </div>
+
+
+  <script src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/js/application.min.js?v=4" type="text/javascript"></script>
+  <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script>
+  <script src="//cdn.optimizely.com/js/2815420024.js"></script>
+  <script>
+      (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+                      (i[r].q = i[r].q || []).push(arguments)
+                  }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+                  m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-61442434-1', 'auto');
+      ga('send', 'pageview');
+
+  </script>
+
+  <script class="video-modal-template" type="text/x-handlebars-template">
+    <div id="video-modal-container" class="video-container">
+
+    </div>
+  </script>
+
+  <div id="content-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div id="content-modal-alert-container">
+          <div class="content">
+            <a class="btn-close-1 close-button">x</a>
+
+            <div id="content-modal-alert-message"></div>
+          </div>
+        </div>
+        <div class="modal-header">
+          <a href="#" class="modal-close-button btn-close-3">close</a>
+
+          <div class="modal-header-content"></div>
+        </div>
+        <div class="modal-body">Loading...</div>
+        <a href="#" class="modal-close-button btn-close-1 hidden-header-only">close</a>
+      </div>
+    </div>
+  </div>
+</div>

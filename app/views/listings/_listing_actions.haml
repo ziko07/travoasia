@@ -116,9 +116,7 @@
           = icon_tag("edit", ["icon-part"])
           .text-part= t("listings.edit_links.edit_listing")
       .listing-view-admin-link
-        %a.icon-with-text-container{href: request_featured_person_listing_path(@current_user,@listing)}
-          = icon_tag("edit", ["icon-part"])
-          .text-part= t("listings.edit_links.featured_listing")
+        = render :partial => 'featured_link'
 
       .listing-view-admin-link
         %a.icon-with-text-container{href: close_person_listing_path(@current_user, @listing), data: { method: "put", remote: "true"}}

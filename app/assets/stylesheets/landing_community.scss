@@ -1,0 +1,111 @@
+.page-community {
+  .hero-container {
+    background: rgba(0, 0, 0, 0) url("http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/bg.drummer.jpg") no-repeat scroll center center / cover;
+    color: #fff;
+    height: 335px;
+    overflow: hidden;
+    padding: 115px 0 70px;
+    position: relative;
+    text-align: center;
+    h1 {
+      color: #fff;
+      font-size: 48px;
+      font-weight: bold;
+      line-height: normal;
+      margin: 0;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 100;
+      margin: 0;
+      padding-bottom: 25px;
+    }
+  }
+  .section {
+    ul {
+      &.block-grid {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  .featured-artist-hero-container {
+    background: rgba(0, 0, 0, 0) url("http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/banner.seth.jpg") no-repeat scroll center center / cover;
+    color: #fff;
+    overflow: hidden;
+    padding: 175px 0 0;
+    position: relative;
+    text-align: center;
+    .button-play {
+      background: rgba(0, 0, 0, 0) url("http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.play.01.png") no-repeat scroll center 0;
+      box-sizing: border-box;
+      display: block;
+      height: 0;
+      overflow: hidden;
+      padding: 155px 0 0;
+    }
+    h1 {
+      color: #fff;
+      font-size: 58px;
+      font-weight: 100;
+      line-height: 65px;
+      margin: 0;
+      padding-bottom: 0;
+    }
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 100;
+      line-height: 36px;
+      margin: 0;
+      padding-bottom: 75px;
+    }
+  }
+
+  .contact-us-container {
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    font-size: 14px;
+    font-weight: 100;
+    padding: 35px 0;
+    text-align: center;
+    h1 {
+      font-size: 24px;
+      font-weight: 100;
+    }
+    .button-container {
+      padding-top: 25px;
+    }
+  }
+}
+
+.top-right-social-buttons {
+  float: right;
+  padding-top: 12px;
+  text-align: right;
+  .share-count {
+    color: #000;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 0 10px;
+    vertical-align: top;
+  }
+  a {
+    width: 30px;
+    overflow: hidden;
+    height: 30px;
+    display: inline-block;
+  }
+  .twitter-share-button {
+    background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll -700px -900px;
+    padding: 30px 0 0;
+  }
+
+  .fb-share-button {
+    background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll -800px -900px;
+    padding: 30px 0 0;
+  }
+}

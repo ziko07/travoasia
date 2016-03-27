@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311070106) do
+ActiveRecord::Schema.define(version: 20160326103010) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "token",            limit: 255
@@ -247,8 +247,8 @@ ActiveRecord::Schema.define(version: 20160311070106) do
   add_index "community_customizations", ["community_id"], name: "index_community_customizations_on_community_id", using: :btree
 
   create_table "community_memberships", force: :cascade do |t|
-    t.string   "person_id",           limit: 255
-    t.integer  "community_id",        limit: 4
+    t.string   "person_id",           limit: 255,                      null: false
+    t.integer  "community_id",        limit: 4,                        null: false
     t.boolean  "admin",                           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -260,7 +260,7 @@ ActiveRecord::Schema.define(version: 20160311070106) do
   end
 
   add_index "community_memberships", ["community_id"], name: "index_community_memberships_on_community_id", using: :btree
-  add_index "community_memberships", ["person_id", "community_id"], name: "memberships", using: :btree
+  add_index "community_memberships", ["person_id", "community_id"], name: "memberships", unique: true, using: :btree
 
   create_table "community_translations", force: :cascade do |t|
     t.integer  "community_id",    limit: 4,     null: false
@@ -410,6 +410,13 @@ ActiveRecord::Schema.define(version: 20160311070106) do
 
   add_index "feature_flags", ["community_id"], name: "index_feature_flags_on_community_id", using: :btree
 
+  create_table "featured_requests", force: :cascade do |t|
+    t.string   "listing_id",  limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.text     "content",      limit: 65535
     t.string   "author_id",    limit: 255
@@ -548,6 +555,7 @@ ActiveRecord::Schema.define(version: 20160311070106) do
     t.boolean  "pickup_enabled",                                default: false
     t.integer  "shipping_price_cents",            limit: 4
     t.integer  "shipping_price_additional_cents", limit: 4
+    t.boolean  "is_featured"
   end
 
   add_index "listings", ["category_id"], name: "index_listings_on_new_category_id", using: :btree
@@ -930,6 +938,20 @@ ActiveRecord::Schema.define(version: 20160311070106) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "country_code",      limit: 8
+  end
+
+  create_table "site_communities", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "designation",        limit: 255
+    t.string   "address",            limit: 255
+    t.string   "image",              limit: 255
+    t.text     "about",              limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "testimonials", force: :cascade do |t|

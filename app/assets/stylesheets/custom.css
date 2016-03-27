@@ -1,0 +1,16 @@
+.featured-listing {
+    padding-bottom: 30px;
+    border-bottom: 2px solid #f2dede;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.listing-list {
+    padding-top: 30px;
+}
+
+.new-communities {
+    float: right;
+    width: 200px;
+    margin-bottom: 20px;
+}

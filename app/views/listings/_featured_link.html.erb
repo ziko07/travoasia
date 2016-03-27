@@ -1,0 +1,31 @@
+<% unless is_feature_request(@listing) %>
+    <% if @listing.is_featured? %>
+        <a class="icon-with-text-container" href="#" disabled = "true" style="pointer-events: none;cursor: default;">
+          <%= icon_tag("star", ["icon-part"]) %>
+          <div class="text-part">
+            <%= t("listings.edit_links.featured_listing") %>
+          </div>
+        </a>
+    <% else %>
+        <a class="icon-with-text-container" href="#modal">
+          <%= icon_tag("star", ["icon-part"]) %>
+          <div class="text-part">
+            <%= t("listings.edit_links.featured_listing_request") %>
+          </div>
+        </a>
+    <% end %>
+<% end %>
+<%#= request_featured_person_listing_path(@current_user,@listing) %>
+
+<div class="remodal" data-remodal-id="modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>Request For Making your Listing Featured</h1>
+  <%= form_tag request_featured_person_listing_path(@current_user,@listing.id), :method => "get" do %>
+      <%= text_area_tag 'description','', placeholder: "Description goes here." %>
+      <br>
+      <br>
+      <%= submit_tag "Make Featured", class: 'remodal-confirm' %>
+      <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+  <% end %>
+
+</div>

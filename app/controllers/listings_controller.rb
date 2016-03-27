@@ -429,8 +429,16 @@ class ListingsController < ApplicationController
   end
 
   def request_featured
-
+    @request_feature = FeaturedRequest.new(listing_id: params[:id], description: params[:description])
+    if @request_feature.save
+      flash[:notice] = 'Your Request is successfully send to Admin'
+      redirect_to listing_path
+    else
+      flash[:error] = 'Something is worng Please try latter'
+      redirect_to listing_path
+    end
   end
+
 
   def show_in_updates_email
     @listing = @current_community.listings.find(params[:id])

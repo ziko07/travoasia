@@ -1,0 +1,22 @@
+<%= form_for @site_community, :html => {:multipart => true} do |form| %>
+    <%= form.label :name, 'Name' + "*", :class => "input" %>
+    <%= form.text_field(:name, :class => "title_text_field", :maxlength => "60") %>
+
+    <%= form.label :designation, 'Designation' + "*", :class => "input" %>
+    <%= form.text_field(:designation, :class => "title_text_field", :maxlength => "60") %>
+
+    <%= form.label :address, 'Address' + "*", :class => "input" %>
+    <%= form.text_field(:address, :class => "title_text_field", :maxlength => "60") %>
+
+    <%= form.label :image, 'Image' + "*", :class => "input" %>
+    <%= form.file_field(:image, :class => "title_text_field", :maxlength => "60") %>
+
+    <%= form.label :about, 'About' + "*", :class => "input" %>
+    <%= form.text_area(:about, :class => "title_text_field") %>
+
+    <div class="add-category-buttons">
+      <div class="inline-button-container">
+        <%= form.button 'Save' %>
+      </div>
+     </div>
+<% end %>

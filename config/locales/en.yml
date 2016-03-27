@@ -1452,7 +1452,8 @@ en:
     edit_links:
       close_listing: "Close listing"
       edit_listing: "Edit listing"
-      featured_listing: "Request Featured Listing"
+      featured_listing_request: "Request Featured Listing"
+      featured_listing: "Feature Listing"
       reopen_listing: "Reopen listing"
       move_to_top: "Move to top of homepage"
       show_in_updates_email: "Show in the next automatic email"
