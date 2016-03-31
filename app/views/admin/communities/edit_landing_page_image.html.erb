@@ -1,0 +1,26 @@
+<%= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) } %>
+<% content_for :title_header do %>
+    <h1>
+      <%= 'Upload Landing Page Image' %>
+    </h1>
+<% end %>
+
+
+<div class="left-navi-section">
+<%= form_tag( save_landing_image_admin_community_path(@current_community), :multipart => true) do %>
+    <%= label_tag :name, 'Name' + "*", :class => "input" %>
+    <%= text_field_tag 'landing_page[city]', '', maxlength: 60, class: "title_text_field" %>
+
+      <%= label_tag :name, 'Image' + "*", :class => "input" %>
+      <%= select_tag "landing_page[position]", options_for_select([ "1", "2","3", "4" ]), prompt: "Select Position" %>
+      <%= label_tag :name, 'Image' + "*", :class => "input" %>
+    <%= file_field_tag 'landing_page[image]' %>
+
+      <div class="add-category-buttons">
+        <div class="inline-button-container">
+          <%= button_tag "Upload" %>
+        </div>
+      </div>
+<% end %>
+
+</div>

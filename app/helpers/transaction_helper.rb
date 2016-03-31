@@ -123,6 +123,27 @@ module TransactionHelper
           text: t("conversations.status.waiting_payment_from_you")
         }
       } },
+      confirmed_by_customer: ->() { {
+        author: {
+          icon: icon_waiting_other,
+          text: t("conversations.status.waiting_payment_from_admin")
+        },
+        starter: {
+          icon: icon_waiting_you,
+          text: t("conversations.status.waiting_payment_from_admin")
+        }
+      } },
+
+      canceled_by_customer: ->() { {
+          author: {
+              icon: icon_waiting_other,
+              text: t("conversations.status.waiting_payment_from_admin")
+          },
+          starter: {
+              icon: icon_waiting_you,
+              text: t("conversations.status.waiting_payment_from_admin")
+          }
+      } },
 
       rejected: -> () { {
         both: {

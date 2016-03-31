@@ -1,5 +1,5 @@
 <li class="featured-listing has-link" style="background-image: url('<%= listing.listing_images.first.image.url %>');">
-  <a href="https://listings.studiotime.io/en/listings/200756-the-ice-plant">
+  <a href="<%= listing_path(listing) %>">
         <span class="label-bottom">
           <%= listing.title %>
           <div class="rate-container cf">

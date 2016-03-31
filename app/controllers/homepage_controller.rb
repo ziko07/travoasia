@@ -8,7 +8,9 @@ class HomepageController < ApplicationController
 
   def index
     @featured_listing = Listing.all.where(is_featured: true)
-   render layout: 'landing'
+    @all_shapes = shapes.get(community_id: @current_community.id)[:data]
+    @landing_images = LandingPageImage.all
+    render layout: 'landing'
   end
 
   def community
@@ -17,7 +19,7 @@ class HomepageController < ApplicationController
   end
 
   def listing
-    # @homepage = true
+     # @homepage = true
 
     @view_type = HomepageController.selected_view_type(params[:view], @current_community.default_browse_view, APP_DEFAULT_VIEW_TYPE, VIEW_TYPES)
 
@@ -239,18 +241,18 @@ class HomepageController < ApplicationController
       .map do |key, values|
         boundaries = values.inject(:merge)
 
-        {
+      {
           id: key,
           value: (boundaries[:min].to_f..boundaries[:max].to_f)
-        }
-      end
+      }
+    end
   end
 
   # Filter search params if their values equal min/max
   def self.filter_unnecessary(search_params, numeric_fields)
     search_params.reject do |search_param|
       numeric_field = numeric_fields.find(search_param[:id])
-      search_param == { id: numeric_field.id, value: (numeric_field.min..numeric_field.max) }
+      search_param == {id: numeric_field.id, value: (numeric_field.min..numeric_field.max)}
     end
   end
 
@@ -276,8 +278,8 @@ class HomepageController < ApplicationController
 
   def search_coordinates(latlng)
     lat, lng = latlng.split(',')
-    if(lat.present? && lng.present?)
-      return { latitude: lat, longitude: lng }
+    if (lat.present? && lng.present?)
+      return {latitude: lat, longitude: lng}
     else
       ArgumentError.new("Format of latlng coordinate pair \"#{latlng}\" wasn't \"lat,lng\" ")
     end

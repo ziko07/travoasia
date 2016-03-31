@@ -55,6 +55,8 @@ Kassi::Application.routes.draw do
   root :to => 'homepage#index'
 
   get '/browse_listings', to: 'homepage#listing'
+  get '/community', to: 'homepage#community'
+  get '/countries.json', to: 'homepage#countries'
   get '/:locale/browse_listings', to: 'homepage#listing'
 
   # error handling: 3$: http://blog.plataformatec.com.br/2012/01/my-five-favorite-hidden-features-in-rails-3-2/
@@ -116,7 +118,7 @@ Kassi::Application.routes.draw do
     end
 
     namespace :admin do
-
+      resources :site_communities
       get "/paypal_preferences" => "paypal_preferences#index"
       post "/paypal_preferences/preferences_update" => "paypal_preferences#preferences_update"
       get "/paypal_preferences/account_create" => "paypal_preferences#account_create"
@@ -126,9 +128,14 @@ Kassi::Application.routes.draw do
         member do
           get :getting_started, to: 'communities#getting_started'
           get :featured_listing, to: 'listing_shapes#featured_listing'
+          get :accept_feature_request, to: 'listing_shapes#accept_feature_request'
+          get :ban_feature_request, to: 'listing_shapes#ban_feature_request'
+          get :remove_featured_listing, to: 'listing_shapes#remove_featured_listing'
           get :edit_details, to: 'community_customizations#edit_details'
           put :update_details, to: 'community_customizations#update_details'
           get :edit_look_and_feel
+          get :edit_landing_page_image
+          post :save_landing_image
           put :edit_look_and_feel, to: 'communities#update_look_and_feel'
           get :edit_welcome_email
           post :create_sender_address
@@ -150,6 +157,12 @@ Kassi::Application.routes.draw do
           delete :delete_marketplace
         end
         resources :transactions, controller: :community_transactions, only: :index
+        resources :transactions, controller: :community_transactions do
+          member do
+            get :accept_transaction
+            get :cancel_transaction
+          end
+        end
         resources :emails
         resources :community_memberships do
           member do

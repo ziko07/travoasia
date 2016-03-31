@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326103010) do
+ActiveRecord::Schema.define(version: 20160331070641) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "token",            limit: 255
@@ -454,6 +454,18 @@ ActiveRecord::Schema.define(version: 20160326103010) do
 
   add_index "invitations", ["code"], name: "index_invitations_on_code", using: :btree
   add_index "invitations", ["inviter_id"], name: "index_invitations_on_inviter_id", using: :btree
+
+  create_table "landing_page_images", force: :cascade do |t|
+    t.string   "city",               limit: 255
+    t.string   "image",              limit: 255
+    t.integer  "position",           limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+  end
 
   create_table "listing_followers", id: false, force: :cascade do |t|
     t.string  "person_id",  limit: 255

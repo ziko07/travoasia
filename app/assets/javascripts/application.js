@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery-ui-1.9.2.custom
+//= require jquery.geocomplete.min
 //= require jquery_ujs
 //= require jquery.form
 //= require jquery.validate

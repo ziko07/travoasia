@@ -17,6 +17,24 @@ class Admin::CommunitiesController < ApplicationController
     flash.now[:notice] = t("layouts.notifications.stylesheet_needs_recompiling") if @community.stylesheet_needs_recompile?
   end
 
+  def edit_landing_page_image
+    @selected_left_navi_link = 'edit_landing_image'
+  end
+
+  def save_landing_image
+   pre_image =  LandingPageImage.find_by_position(landing_images[:position])
+    if pre_image.present?
+      pre_image.destroy
+    end
+    new_image = LandingPageImage.new(landing_images)
+    if new_image.save
+      flash[:notice] = 'Landing Page image is uploded'
+    else
+      flash[:error] = 'Something is worng Please try latter'
+    end
+     redirect_to edit_landing_page_image_admin_community_path(@current_community)
+  end
+
   def edit_text_instructions
     @selected_left_navi_link = "text_instructions"
     @community = @current_community
@@ -167,7 +185,7 @@ class Admin::CommunitiesController < ApplicationController
   end
 
   def create_payment_gateway
-    @current_community.payment_gateway = BraintreePaymentGateway.create(params[:payment_gateway].merge(community: @current_community))
+    @current_community.payment_gateway = BraintreePaymentGateway.create(getway_params.merge(community: @current_community))
     update_payment_gateway
   end
 
@@ -401,6 +419,16 @@ class Admin::CommunitiesController < ApplicationController
 
       redirect_to action: :edit_welcome_email
     end
+  end
+
+  private
+
+  def getway_params
+    params.require(:payment_gateway).permit!
+  end
+
+  def landing_images
+    params.require(:landing_page).permit!
   end
 
 end

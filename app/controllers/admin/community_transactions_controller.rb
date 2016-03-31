@@ -46,7 +46,6 @@ class Admin::CommunityTransactionsController < ApplicationController
         # listings in DB, so those have to be handled.
         transaction[:listing_url] = listing_path(id: transaction[:listing][:id])
       end
-
       transaction[:last_activity_at] = last_activity_for(transaction)
 
       transaction.merge({author: author, starter: starter})
@@ -55,6 +54,7 @@ class Admin::CommunityTransactionsController < ApplicationController
     conversations = WillPaginate::Collection.create(pagination_opts[:page], pagination_opts[:per_page], count) do |pager|
       pager.replace(conversations)
     end
+
 
     respond_to do |format|
       format.html do
@@ -114,6 +114,16 @@ class Admin::CommunityTransactionsController < ApplicationController
         conversation[:author] ? conversation[:author][:username] : "DELETED"
       ].to_csv(force_quotes: true)
     end
+  end
+
+  def accept_transaction
+    TransactionService::Transaction.complete(community_id:params[:community_id], transaction_id: params[:id], message: params[:message], sender_id: params[:sender_id])
+   redirect_to admin_community_transactions_path(@current_community.id)
+  end
+
+  def cancel_transaction
+    TransactionService::Transaction.cancel(community_id:params[:community_id], transaction_id: params[:id], message: params[:message], sender_id: params[:sender_id])
+    redirect_to admin_community_transactions_path(@current_community.id)
   end
 
   private

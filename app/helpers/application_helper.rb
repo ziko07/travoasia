@@ -673,6 +673,13 @@ module ApplicationHelper
         :name => "tribe_look_and_feel"
       },
       {
+          :topic => :configure,
+          :text => 'Change Landing Page Image',
+          :icon_class => "ss-paintroller",
+          :path => edit_landing_page_image_admin_community_path(@current_community),
+          :name => "edit_landing_image"
+      },
+      {
         :topic => :configure,
         :text => t("admin.communities.menu_links.menu_links"),
         :icon_class => icon_class("link"),

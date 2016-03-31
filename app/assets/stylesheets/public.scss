@@ -5,6 +5,8 @@ html {
 }
 
 body {
+  font-family: "Source Sans Pro", helvetica, sans-serif;
+  font-size: 1em;
   margin: 0;
 }
 
@@ -223,4 +225,8 @@ th {
 
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+.pac-logo::after {
+  background-image: none !important;
 }

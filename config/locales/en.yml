@@ -321,7 +321,9 @@ en:
           rejected: Rejected
           paid: Paid
           confirmed: Confirmed
+          confirmed_by_customer: 'Confirmed By Customer'
           canceled: Canceled
+          canceled_by_customer: Canceled By Customer
           initiated: "Waiting PayPal payment"
           pending_ext: "Waiting PayPal payment"
         not_available: "Not available"
@@ -637,8 +639,10 @@ en:
       rejected_request: "Request rejected."
       rejected_offer: "Offer rejected."
       confirmed_request: "Order completed."
+      confirmed_request_by_custome: "Custome accepted the order"
       confirmed_offer: "Offer completed."
       canceled_request: "Order canceled."
+      canceled_request_by_customer: "Order canceled by customer."
       canceled_offer: "Offer canceled."
       message_from: "Message from %{person}"
       about_listing: "About listing %{listing_title}"
@@ -651,6 +655,8 @@ en:
       rejected_request: "rejected the request, canceled the payment"
       rejected_offer: "rejected the offer"
       confirmed_request: "marked the order as completed"
+      confirmed_request_by_customer: "Custome accepted the order"
+      canceled_request_by_customer: "Custome cancel the order"
       confirmed_offer: "marked the offer as completed"
       canceled_request: "canceled the order"
       canceled_offer: "canceled the offer"
@@ -746,6 +752,7 @@ en:
       waiting_confirmation_from_requester: "Waiting for %{requester_name} to mark the order completed"
       waiting_confirmation_from_you: "Waiting for you to mark the order completed"
       waiting_payment_from_requester: "Waiting for %{requester_name} to pay"
+      waiting_payment_from_admin: "Waiting for Admin to pay"
       waiting_payment_from_you: "Waiting for you to pay"
       waiting_feedback_from_you: "Waiting for you to give feedback"
       pending_external_inbox:

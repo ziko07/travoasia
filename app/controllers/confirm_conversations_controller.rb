@@ -62,7 +62,7 @@ class ConfirmConversationsController < ApplicationController
 
 
     msg = parse_message_param()
-    transaction = complete_or_cancel_tx(@current_community.id, @listing_transaction.id, status, msg, @current_user.id)
+    # transaction = complete_or_cancel_tx(@current_community.id, @listing_transaction.id, status, msg, @current_user.id)
 
     give_feedback = Maybe(params)[:give_feedback].select { |v| v == "true" }.or_else { false }
 
@@ -77,7 +77,15 @@ class ConfirmConversationsController < ApplicationController
       else
         person_transaction_path(:person_id => @current_user.id, :id => @listing_transaction.id)
       end
-
+    if status == :confirmed
+      transaction = Transaction.find_by_id(params[:id])
+      transaction.current_state = :confirmed_by_customer
+      transaction.save
+    else
+      transaction = Transaction.find_by_id(params[:id])
+      transaction.current_state = :canceled_by_customer
+      transaction.save
+    end
     redirect_to redirect_path
   end
 

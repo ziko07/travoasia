@@ -1,6 +1,8 @@
 /*
+ *= require ./fonts
  *= require public
  *= require landing_community
+ *= require font-awesome.min
  */
 .page-landing {
   .hero-container {
@@ -101,7 +103,7 @@
     }
   }
   .featured-artist-hero-container {
-    background: rgba(0, 0, 0, 0) url("http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/banner.seth.jpg") no-repeat scroll center center / cover;
+    background: rgba(0, 0, 0, 0) url("middle_banner.png") no-repeat scroll center center / cover;
     color: #fff;
     overflow: hidden;
     padding: 175px 0 0;
@@ -268,6 +270,20 @@
     line-height: 60px;
     padding: 0 30px;
     position: relative;
+  }
+
+  .view-community {
+    background-color: #fc913b;
+    background-image: url('community_btn.png');
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    line-height: 60px;
+    padding: 0 30px;
+    position: relative;
+    height: 81px;
+    width: 351px;
   }
 
   footer {
@@ -615,3 +631,108 @@ header {
 .toggle-menu.hidden {
   display: none;
 }
+
+.header-toggle-menu-user {
+  min-width: 12.5em;
+  position: absolute;
+}
+
+.header-user-toggle {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-left: 0.75em;
+}
+
+.left {
+  float: left;
+}
+
+.toggle.toggled {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #474747;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  border-bottom-color: #474747;
+  border-left-color: #474747;
+  border-right-color: #474747;
+  border-top-color: #474747;
+  color: white !important;
+}
+
+.toggle.toggled {
+  color: white !important;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+.header-hover.toggled {
+  background-color: #474747;
+}
+
+.toggled .header-text-link {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.toggled .header-menu-toggle-container {
+  background-color: #474747;
+  color: white;
+}
+
+.header-user-avatar {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  height: 2.5em;
+  margin-bottom: 0.625em;
+  margin-top: 0.625em;
+}
+
+.badge {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #fc0072;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  height: 20px;
+  left: 1.4375em;
+  line-height: 19px;
+  position: absolute;
+  text-align: center;
+  top: 1.875em;
+  width: 20px;
+}
+
+.mobile-badge {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #474747;
+  display: inline-block;
+  height: 20px;
+  line-height: 19px;
+  margin-left: 0.75em;
+  text-align: center;
+  width: 20px;
+}
+
