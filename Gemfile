@@ -136,6 +136,11 @@ group :development do
   gem 'quiet_assets', "~> 1.1.0"
   gem 'better_errors', "~> 2.1.1"
   gem 'web-console', '~> 2.0'
+
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
 end
 
 group :test do

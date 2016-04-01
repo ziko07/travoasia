@@ -831,6 +831,16 @@ module ApplicationHelper
     end
   end
 
+  def get_category(name)
+    category_translation =  CategoryTranslation.where("name LIKE  ?", "%#{name}%" ).first
+    if category_translation.present?
+      category_translation.category.url
+    else
+      name
+    end
+
+  end
+
   def payment_settings_url(gateway_type, person, url_params)
     if gateway_type == :braintree
       show_braintree_settings_payment_url(person, url_params.merge(locale: person.locale))
