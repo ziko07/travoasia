@@ -51,7 +51,7 @@
 
     <h1 class="section-header">Explore Studios</h1>
 
-    <h2 class="subheader">Find studios in your city, or explore unique ones around the world.</h2>
+    <h2 class="subheader">Find studios in your city, or explore unique ones around Asia.</h2>
     <ul class="block-grid cf">
       <% if @landing_images.present? %>
       <% @landing_images.each do |images| %>
@@ -63,17 +63,17 @@
       <% end %>
       <% end %>
 
-      <!--<li class="no-right-margin" style="background:url(<%= asset_path 'japan.png' %>)  center center no-repeat; background-size:cover;">-->
+      <!--<li class="no-right-margin" style="background:url(<%#= asset_path 'japan.png' %>)  center center no-repeat; background-size:cover;">-->
         <!--<a href="https://listings.studiotime.io/en?category=new-york-city&view=grid">-->
           <!--<span class="label-center">New York</span>-->
         <!--</a>-->
       <!--</li>-->
-      <!--<li class="double-wide"  style="background:url(<%= asset_path 'taiwan.png' %>) center center no-repeat; background-size:cover;">-->
+      <!--<li class="double-wide"  style="background:url(<%#= asset_path 'taiwan.png' %>) center center no-repeat; background-size:cover;">-->
         <!--<a href="https://listings.studiotime.io/en?category=london&view=grid">-->
           <!--<span class="label-center">London</span>-->
         <!--</a>-->
       <!--</li>-->
-      <!--<li class="no-right-margin" style="background:url(<%= asset_path 'indo.png' %>) center center no-repeat; background-size:cover;">-->
+      <!--<li class="no-right-margin" style="background:url(<%#= asset_path 'indo.png' %>) center center no-repeat; background-size:cover;">-->
         <!--<a href="https://listings.studiotime.io/en?category=paris&view=grid">-->
           <!--<span class="label-center">Paris</span>-->
         <!--</a>-->
@@ -82,14 +82,14 @@
 
     <div class="text-centered paddingTop20">
       <!--<div class="graphic-compass">graphic</div>-->
-      <a class="" href="<%= browse_listings_path %>">Explore more studios around the world</a>
+      <a class="" href="<%= browse_listings_path %>">Explore more studios around Asia</a>
     </div>
 
   </div>
 
   <div class="section layout-centered-content">
 
-    <h1 class="section-header">Featured Studios</h1>
+    <h1 class="section-header">Featured Activities</h1>
     <ul class="block-grid cf">
       <% @featured_listing.each do |listing| %>
           <%= render 'featured_listing', listing: listing %>
@@ -97,7 +97,7 @@
     </ul>
 
     <div class="text-centered paddingTop20">
-      <a class="" href="<%= browse_listings_path %>">See all of our Listings</a>
+      <a class="" href="<%= browse_listings_path %>">Here Their stories</a>
     </div>
 
   </div>

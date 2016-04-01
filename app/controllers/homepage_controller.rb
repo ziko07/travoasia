@@ -9,7 +9,7 @@ class HomepageController < ApplicationController
   def index
     @featured_listing = Listing.all.where(is_featured: true)
     @all_shapes = shapes.get(community_id: @current_community.id)[:data]
-    @landing_images = LandingPageImage.all
+    @landing_images = LandingPageImage.all.order(:position)
     render layout: 'landing'
   end
 
