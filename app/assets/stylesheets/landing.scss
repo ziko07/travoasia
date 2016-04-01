@@ -76,7 +76,7 @@
           width: 100%;
         }
         .current-value {
-          background: #fff url("sprint.png") no-repeat scroll 15px 16px;
+          background: #fff asset-url("sprint.png", image) no-repeat scroll 15px 16px;
           border-bottom-right-radius: 5px;
           border-top-right-radius: 5px;
           color: #3d3d3d;
@@ -89,7 +89,7 @@
           //width: 100%;
         }
         .dd-icon {
-          background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll 0 -50px;
+          background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll 0 -50px;
           height: 12px;
           overflow: hidden;
           padding: 12px 0 0;
@@ -102,7 +102,7 @@
     }
   }
   .featured-artist-hero-container {
-    background: rgba(0, 0, 0, 0) url("middle_banner.png") no-repeat scroll center center / cover;
+    background: rgba(0, 0, 0, 0) asset-url("middle_banner.png", image) no-repeat scroll center center / cover;
     color: #fff;
     overflow: hidden;
     padding: 175px 0 0;
@@ -146,7 +146,7 @@
       margin: 0 22px;
       overflow: hidden;
       padding: 42px 0 0;
-      background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll;
+      background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll;
       &.hypebeast {
         background-position: center -290px;
         width: 230px;
@@ -273,7 +273,7 @@
 
   .view-community {
     background-color: #fc913b;
-    background-image: url('community_btn.png');
+    background-image: asset-url("community_btn.png", image);
     border: 0 none;
     border-radius: 3px;
     color: #fff;
@@ -303,7 +303,7 @@
         margin: 0 20px 0 0;
         width: 40px;
         a {
-          background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll;
+          background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll;
           display: block;
           height: 2px;
           overflow: hidden;
@@ -360,7 +360,7 @@
 }
 
 .graphic-google-play-white {
-  background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll 0 -600px;
+  background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll 0 -600px;
   box-sizing: content-box;
   display: inline-block;
   height: 0;
@@ -370,7 +370,7 @@
 }
 
 .graphic-itunes-white {
-  background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll -200px -800px;
+  background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll -200px -800px;
   border-radius: 4px;
   box-sizing: content-box;
   display: inline-block;

@@ -100,12 +100,12 @@
     display: inline-block;
   }
   .twitter-share-button {
-    background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll -700px -900px;
+    background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll -700px -900px;
     padding: 30px 0 0;
   }
 
   .fb-share-button {
-    background: rgba(0, 0, 0, 0) url("sprint.png") no-repeat scroll -800px -900px;
+    background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll -800px -900px;
     padding: 30px 0 0;
   }
 }
