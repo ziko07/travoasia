@@ -135,6 +135,7 @@ Kassi::Application.routes.draw do
           put :update_details, to: 'community_customizations#update_details'
           get :edit_look_and_feel
           get :edit_landing_page_image
+          get :delete_landing_image
           post :save_landing_image
           put :edit_look_and_feel, to: 'communities#update_look_and_feel'
           get :edit_welcome_email

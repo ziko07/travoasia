@@ -115,21 +115,13 @@
 
     <h1 class="section-header">Our Community</h1>
     <ul class="block-grid cf">
-      <li style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.staff.engineer.jpg) center center no-repeat; background-size:cover;">
-        <a href="/engineers" class="">
-          <span class="label-center">Engineers</span>
-          <span class="hover-content">Find the best emerging engineers to work with and also discover those who are top in the industry.</span>
-        </a></li>
-      <li style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.staff.artist.jpg) center center no-repeat; background-size:cover;">
-        <a href="/artists" class="">
-          <span class="label-center">Artists</span>
-          <span class="hover-content">Find award-winning artists ready to work on your project or book them for a live show. </span>
-        </a></li>
-      <li class="no-right-margin" style="background:url(http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/graphic.staff.producer.jpg) center center no-repeat; background-size:cover;">
-        <a href="/producers" class="">
-          <span class="label-center">Producers</span>
-          <span class="hover-content">Shining the light on producers for once and for all. Find the best producers to work with.</span>
-        </a></li>
+      <% @site_communities.all.each do |site_community|  %>
+          <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
+            <a href="/community" class="">
+              <span class="label-center thin"><%= site_community.designation %></span>
+              <span class="hover-content">Find the best emerging engineers to work with and also discover those who are top in the industry.</span>
+            </a></li>
+      <% end %>
     </ul>
 
     <div class="button-container" style="padding:20px; text-align:center;">

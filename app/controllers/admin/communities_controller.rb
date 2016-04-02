@@ -19,6 +19,7 @@ class Admin::CommunitiesController < ApplicationController
 
   def edit_landing_page_image
     @selected_left_navi_link = 'edit_landing_image'
+    @landing_images = LandingPageImage.all.order(:position)
   end
 
   def save_landing_image
@@ -29,6 +30,16 @@ class Admin::CommunitiesController < ApplicationController
     new_image = LandingPageImage.new(landing_images)
     if new_image.save
       flash[:notice] = 'Landing Page image is uploded'
+    else
+      flash[:error] = 'Something is worng Please try latter'
+    end
+     redirect_to edit_landing_page_image_admin_community_path(@current_community)
+  end
+
+  def delete_landing_image
+     image = LandingPageImage.find_by_id(params[:image_id])
+    if image.destroy
+      flash[:notice] = 'Landing Page image is Deleted'
     else
       flash[:error] = 'Something is worng Please try latter'
     end

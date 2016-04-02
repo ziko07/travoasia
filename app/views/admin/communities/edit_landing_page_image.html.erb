@@ -7,14 +7,42 @@
 
 
 <div class="left-navi-section">
+  <% if @landing_images.present? %>
+      <div class="community-list">
+        <table id="admin_members_list">
+          <thead>
+          <tr>
+            <th>Country</th>
+            <th>Position</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @landing_images.each do |image| %>
+              <tr>
+                <td><%= image.city %></td>
+                <td><%= image.position %></td>
+                <td><%= image_tag(image.image.url, width: 30) %></td>
+                <td>
+                  <%= link_to delete_landing_image_admin_community_path(@current_community.id, image_id: image.id) , data: { confirm: 'Are you sure?' }, title: 'Delete' do %>
+                      <i class="icon-remove"></i>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+  <% end %>
 <%= form_tag( save_landing_image_admin_community_path(@current_community), :multipart => true) do %>
     <%= label_tag :name, 'Name' + "*", :class => "input" %>
-    <%= text_field_tag 'landing_page[city]', '', maxlength: 60, class: "title_text_field" %>
+    <%= text_field_tag 'landing_page[city]', '', maxlength: 20, class: "title_text_field" %>
 
-      <%= label_tag :name, 'Image' + "*", :class => "input" %>
+      <%= label_tag :name, 'Image Position' + "*", :class => "input" %>
       <%= select_tag "landing_page[position]", options_for_select([ "1", "2","3", "4" ]), prompt: "Select Position" %>
       <%= label_tag :name, 'Image' + "*", :class => "input" %>
-    <%= file_field_tag 'landing_page[image]' %>
+      <%= file_field_tag 'landing_page[image]' %>
 
       <div class="add-category-buttons">
         <div class="inline-button-container">

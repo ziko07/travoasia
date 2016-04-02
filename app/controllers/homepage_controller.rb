@@ -10,6 +10,7 @@ class HomepageController < ApplicationController
     @featured_listing = Listing.all.where(is_featured: true)
     @all_shapes = shapes.get(community_id: @current_community.id)[:data]
     @landing_images = LandingPageImage.all.order(:position)
+    @site_communities = Admin::SiteCommunity.all.limit(3)
     render layout: 'landing'
   end
 
