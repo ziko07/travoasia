@@ -10,37 +10,26 @@
         Your browser doesn't support HTML5 video. Here's a <a href="#">link</a> to download the video.
       </video>
 
-      <h1 class="entry-title">Book Studiotime Anywhere</h1>
+      <h1 class="entry-title">
+        <%= community_slogan %>
+      </h1>
 
-      <h2>The largest online community to rent music studios</h2>
+      <h2>
+        <%= community_description %>
+      </h2>
 
       <form class="cf" action="https://listings.studiotime.io/" method="GET">
         <div class="left-input-container cf">
 
-          <input type="text" autocomplete="off" id="autocomplete" name="q" placeholder="Where would you like to make music?"/>
+          <input type="text" autocomplete="off" id="autocomplete" name="q" placeholder="<%= (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need") %>"/>
 
           <div class="dropdown" onclick="void(0)">
             <%= select_tag "type_id", options_for_select(@all_shapes.map { |c| [t(c[:name_tr_key]), c[:name]] }), name: "type_id", :class => "current-value", prompt: "All Type" %>
-            <!--<span class="current-value">Los Angeles</span>-->
             <span class="dd-icon">v</span>
-            <!--<ul>-->
-              <!--<li><a href="#" data-value="los-angeles">Los Angeles</a></li>-->
-              <!--<li><a href="#" data-value="northern-california">Northern California</a></li>-->
-              <!--<li><a href="#" data-value="new-york-city">New York</a></li>-->
-              <!--<li><a href="#" data-value="nashville">Nashville</a></li>-->
-              <!--<li><a href="#" data-value="miami">Miami</a></li>-->
-              <!--<li><a href="#" data-value="london">London</a></li>-->
-              <!--<li><a href="#" data-value="berlin">Berlin</a></li>-->
-              <!--<li><a href="#" data-value="paris">Paris</a></li>-->
-              <!--<li><a href="#" data-value="copenhagen">Copenhagen</a></li>-->
-              <!--<li><a href="#" data-value="hong-kong">Hong Kong</a></li>-->
-              <!--<li><a href="#" data-value="tokyo">Tokyo</a></li>-->
-              <!--<li><a href="#" data-value="other">Other</a></li>-->
-            <!--</ul>-->
           </div>
 
         </div>
-        <input type="submit" class="floatright button-1" value="Find Studios"/>
+        <input type="submit" class="floatright button-1" value="Find Travel"/>
         <input type="hidden" name="category" value="los-angeles"/>
         <input type="hidden" name="view" value="grid"/>
       </form>
@@ -49,35 +38,19 @@
 
   <div class="section layout-centered-content">
 
-    <h1 class="section-header">Explore Studios</h1>
+    <h1 class="section-header">Explore Travel </h1>
 
-    <h2 class="subheader">Find studios in your city, or explore unique ones around Asia.</h2>
+    <h2 class="subheader">Find travel in your city, or explore unique ones around Asia.</h2>
     <ul class="block-grid cf">
       <% if @landing_images.present? %>
-      <% @landing_images.each do |images| %>
-              <li class="<%= images.position.to_i.odd? ? 'double-wide': 'no-right-margin' %>" style="background:url(<%= images.image.url %>) center center no-repeat; background-size:cover;">
+          <% @landing_images.each do |images| %>
+              <li class="<%= images.position.to_i.odd? ? 'double-wide' : 'no-right-margin' %>" style="background:url(<%= images.image.url %>) center center no-repeat; background-size:cover;">
                 <a href="<%= browse_listings_path(category: get_category(images.city)) %>">
                   <span class="label-center"><%= images.city %></span>
                 </a>
               </li>
+          <% end %>
       <% end %>
-      <% end %>
-
-      <!--<li class="no-right-margin" style="background:url(<%#= asset_path 'japan.png' %>)  center center no-repeat; background-size:cover;">-->
-        <!--<a href="https://listings.studiotime.io/en?category=new-york-city&view=grid">-->
-          <!--<span class="label-center">New York</span>-->
-        <!--</a>-->
-      <!--</li>-->
-      <!--<li class="double-wide"  style="background:url(<%#= asset_path 'taiwan.png' %>) center center no-repeat; background-size:cover;">-->
-        <!--<a href="https://listings.studiotime.io/en?category=london&view=grid">-->
-          <!--<span class="label-center">London</span>-->
-        <!--</a>-->
-      <!--</li>-->
-      <!--<li class="no-right-margin" style="background:url(<%#= asset_path 'indo.png' %>) center center no-repeat; background-size:cover;">-->
-        <!--<a href="https://listings.studiotime.io/en?category=paris&view=grid">-->
-          <!--<span class="label-center">Paris</span>-->
-        <!--</a>-->
-      <!--</li>-->
     </ul>
 
     <div class="text-centered paddingTop20">
@@ -115,7 +88,7 @@
 
     <h1 class="section-header">Our Community</h1>
     <ul class="block-grid cf">
-      <% @site_communities.all.each do |site_community|  %>
+      <% @site_communities.all.each do |site_community| %>
           <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
             <a href="/community" class="">
               <span class="label-center thin"><%= site_community.designation %></span>
@@ -194,42 +167,43 @@
   <div class="remodal" data-remodal-id="modal">
     <button data-remodal-action="close" class="remodal-close"></button>
     <h1>Header</h1>
+
     <div class="modal-body">
       <!--<iframe id="ytplayer" type="text/html" width="1040" height="390"-->
-              <!--src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"-->
-              <!--frameborder="0"/>-->
+      <!--src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"-->
+      <!--frameborder="0"/>-->
     </div>
   </div>
 
   <!--<div id="content-modal" class="modal fade" role="dialog">-->
-    <!--<div class="modal-dialog">-->
-      <!--<div class="modal-content">-->
-        <!--<div id="content-modal-alert-container">-->
-          <!--<div class="content">-->
-            <!--<a class="btn-close-1 close-button">x</a>-->
+  <!--<div class="modal-dialog">-->
+  <!--<div class="modal-content">-->
+  <!--<div id="content-modal-alert-container">-->
+  <!--<div class="content">-->
+  <!--<a class="btn-close-1 close-button">x</a>-->
 
-            <!--<div id="content-modal-alert-message"></div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="modal-header">-->
-          <!--<a href="#" class="modal-close-button btn-close-3">close</a>-->
+  <!--<div id="content-modal-alert-message"></div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="modal-header">-->
+  <!--<a href="#" class="modal-close-button btn-close-3">close</a>-->
 
-          <!--<div class="modal-header-content"></div>-->
-        <!--</div>-->
-        <!--<div class="modal-body">Loading...</div>-->
-        <!--<a href="#" class="modal-close-button btn-close-1 hidden-header-only">close</a>-->
-      <!--</div>-->
-    <!--</div>-->
+  <!--<div class="modal-header-content"></div>-->
+  <!--</div>-->
+  <!--<div class="modal-body">Loading...</div>-->
+  <!--<a href="#" class="modal-close-button btn-close-1 hidden-header-only">close</a>-->
+  <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
 </div>
 
 
 <script type="text/javascript">
-$(function () {
-    $("#autocomplete").geocomplete({
-        details: ".geo-details",
-        detailsAttribute: "data-geo"
-    });
+    $(function () {
+        $("#autocomplete").geocomplete({
+            details: ".geo-details",
+            detailsAttribute: "data-geo"
+        });
 
-});
+    });
 </script>
