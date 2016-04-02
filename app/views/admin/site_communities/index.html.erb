@@ -29,7 +29,7 @@
                     <td><%= site_community.name %></td>
                     <td><%= site_community.designation %></td>
                     <td><%= site_community.address %></td>
-                    <td><%= image_tag(site_community.image.url) %></td>
+                    <td><%= image_tag(site_community.image.url,width:40) %></td>
                   <td><%= raw site_community.about %></td>
                   <td>
                     <%= link_to edit_admin_site_community_path(site_community), title: 'Accept' do %>
