@@ -1,0 +1,49 @@
+<% content_for :javascript do %>
+    initialize_profile_view("#{@person.username}");
+<% end %>
+<% content_for :title_header do %>
+    <h1>
+    <span class="profile-title">
+      <%= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "") %>
+    </span>
+    </h1>
+<% end %>
+
+<div class="row">
+  <div class="request-list">
+    <% if @request.present? %>
+        <table id="admin_members_list">
+          <thead>
+          <tr>
+            <th>Listing Id</th>
+            <th>Start On</th>
+            <th>End On</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @request.each do |request| %>
+              <tr>
+                <td><%= request.transaction_id %></td>
+                <td><%= request.start_on %></td>
+                <td><%= request.end_on %></td>
+                <td>
+                <%= link_to accept_reschedule_request_people_path(transaction_id: request.transaction_id), title: 'Accept' do %>
+                    <i class="icon-ok"></i>
+                <% end %>
+              </td>
+
+                <td>
+                  <%= link_to  reject_reschedule_request_people_path(transaction_id: request.transaction_id), title: 'Reject' do %>
+                      <i class="icon-remove"></i>
+                  <% end %>
+                </td>
+
+          <% end %>
+          </tbody>
+        </table>
+    <% else %>
+        No site communities
+    <% end %>
+  </div>
+</div>

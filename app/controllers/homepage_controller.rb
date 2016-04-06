@@ -7,7 +7,8 @@ class HomepageController < ApplicationController
   VIEW_TYPES = ["grid", "list", "map"]
 
   def index
-    @featured_listing = Listing.all.where(is_featured: true)
+    @homepage = true
+    @featured_listing = Listing.all.where(is_featured: true).limit(6)
     @all_shapes = shapes.get(community_id: @current_community.id)[:data]
     @landing_images = LandingPageImage.all.order(:position)
     @site_communities = Admin::SiteCommunity.all.limit(3)
@@ -101,6 +102,8 @@ class HomepageController < ApplicationController
     else
       search_result.on_success { |listings|
         @listings = listings
+
+        @listings = @listings.delete_if{|x| Listing.find_by_id(x.id).open == false}
         render locals: {
                  shapes: all_shapes,
                  filters: filters,

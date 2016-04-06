@@ -2,12 +2,11 @@
 <div class="template-travoasia page-landing responsive">
   <div class="hero-container">
     <div class="layout-centered-content">
+      <!--<div class="bgvid">-->
+        <!--<figure class="marketplace-cover fluidratio home-page-cover-photo" style="background-image: url(<%#= @current_community.cover_photo.url(:original) %>)"></figure>-->
+      <!--</div>-->
+      <video autoplay loop poster="<%= @current_community.cover_photo.url(:original) %>" id="bgvid">
 
-      <video autoplay loop poster="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/bg.video.still.jpg" id="bgvid">
-        <source src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/video/bg.dj.mp4" type="video/mp4">
-        <source src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/video/bg.dj.webm" type="video/webm">
-        <source src="http://www.studiotime.io/wp-content/themes/sparkling-studiotime/video/bg.dj.ogv" type="video/ogv">
-        Your browser doesn't support HTML5 video. Here's a <a href="#">link</a> to download the video.
       </video>
 
       <h1 class="entry-title">
@@ -18,13 +17,13 @@
         <%= community_description %>
       </h2>
 
-      <form class="cf" action="https://listings.studiotime.io/" method="GET">
+      <form class="cf" action="<%= browse_listings_path %>" method="GET">
         <div class="left-input-container cf">
-
-          <input type="text" autocomplete="off" id="autocomplete" name="q" placeholder="<%= (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need") %>"/>
+          <%= text_field_tag "q", params[:q], :placeholder => (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need"), :onkeypress => 'return noSubmitOnReturn(event)' %>
+          <!--<input type="text" autocomplete="off" id="autocomplete" name="q" placeholder="<%#= (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need") %>"/>-->
 
           <div class="dropdown" onclick="void(0)">
-            <%= select_tag "type_id", options_for_select(@all_shapes.map { |c| [t(c[:name_tr_key]), c[:name]] }), name: "type_id", :class => "current-value", prompt: "All Type" %>
+            <%= select_tag "transaction_type", options_for_select(@all_shapes.map { |c| [t(c[:name_tr_key]), c[:name]] }), name: "transaction_type", :class => "current-value", prompt: "All Type" %>
             <span class="dd-icon">v</span>
           </div>
 
@@ -38,6 +37,7 @@
 
   <div class="section layout-centered-content">
 
+    <%= session[:temp_person_id] %>
     <h1 class="section-header">Explore Travel </h1>
 
     <h2 class="subheader">Find travel in your city, or explore unique ones around Asia.</h2>
@@ -92,7 +92,7 @@
           <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
             <a href="/community" class="">
               <span class="label-center thin"><%= site_community.designation %></span>
-              <span class="hover-content">Find the best emerging engineers to work with and also discover those who are top in the industry.</span>
+              <span class="hover-content"><%= truncate(site_community.about, :length => 30) %></span>
             </a></li>
       <% end %>
     </ul>
@@ -164,16 +164,16 @@
     </div>
   </script>
 
-  <div class="remodal" data-remodal-id="modal">
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <h1>Header</h1>
+  <!--<div class="remodal" data-remodal-id="modal">-->
+  <!--<button data-remodal-action="close" class="remodal-close"></button>-->
+  <!--<h1>Header</h1>-->
 
-    <div class="modal-body">
-      <!--<iframe id="ytplayer" type="text/html" width="1040" height="390"-->
-      <!--src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"-->
-      <!--frameborder="0"/>-->
-    </div>
-  </div>
+  <!--<div class="modal-body">-->
+  <!--&lt;!&ndash;<iframe id="ytplayer" type="text/html" width="1040" height="390"&ndash;&gt;-->
+  <!--&lt;!&ndash;src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"&ndash;&gt;-->
+  <!--&lt;!&ndash;frameborder="0"/>&ndash;&gt;-->
+  <!--</div>-->
+  <!--</div>-->
 
   <!--<div id="content-modal" class="modal fade" role="dialog">-->
   <!--<div class="modal-dialog">-->
@@ -196,14 +196,67 @@
   <!--</div>-->
   <!--</div>-->
 </div>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-m1XVD7c3PfBX_oxxKijOqeyNNqOSUW0&libraries=places&callback=init_autocomplete" async defer></script>
 
 <script type="text/javascript">
-    $(function () {
-        $("#autocomplete").geocomplete({
-            details: ".geo-details",
-            detailsAttribute: "data-geo"
-        });
+    //    $(function () {
+    //        $("#autocomplete").geocomplete({
+    //            details: ".geo-details",
+    //            detailsAttribute: "data-geo"
+    //        });
+    //
+    //    });
 
-    });
+    var autocomplete;
+    function init_autocomplete() {
+        var input = (document.getElementById('q'));
+        var options = {
+            types: ['(regions)']
+        };
+//
+        autocomplete = new google.maps.places.Autocomplete(input, options);
+        autocomplete.addListener('place_changed', get_place);
+        $(document).on({
+            'DOMNodeInserted': function () {
+                $('.pac-item, .pac-item span', this).addClass('needsclick');
+            }
+        }, '.pac-container');
+
+
+    }
+
+    function get_place() {
+        var city = '';
+        var country = '';
+        var place = autocomplete.getPlace();
+        var address_component = place['address_components'];
+        for (var i = 0; i < address_component.length; i++) {
+            type = address_component[i]['types'][0];
+            console.log(address_component[i])
+            switch (type) {
+                case 'country':
+                    country = address_component[i].long_name;
+                    break;
+                case 'administrative_area_level_2':
+                    console.log(type);
+                    city = address_component[i].long_name;
+                    break;
+            }
+        }
+        if (city.length > 0) {
+            var query = city + ', ' + country;
+        }
+        else {
+            query = country
+        }
+
+        $('#q').val(query);
+//    $('#q').parents('form').submit();
+    }
+
+    function noSubmitOnReturn(e) {
+        if (e.keyCode == 13) {
+            return false;
+        }
+    }
 </script>

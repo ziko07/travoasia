@@ -1,0 +1,94 @@
+
+<div class="community-profile">
+  <div class="layout-centered-content cf" style="padding-bottom:45px;">
+
+    <div class="body-left-content">
+
+      <div class="bio-content">
+
+        <div class="bio-box">
+          <div class="main-img" style="background:url(<%= @site_community.image.url %>) center center no-repeat; background-size:cover;">&nbsp;</div>
+          <h1 class=""><%= @site_community.name %></h1>
+          <h2 class="subheader"><%= @site_community.designation %></h2>
+          <h2 class="subheader"><%= @site_community.address %></h2>
+          <div class="social-info">
+            <a href="http://www.twitter.com/robnharkness" class="twitter-followers" target="_new"><i class="fa fa-twitter"></i>
+              1,342 Followers</a> &nbsp;
+            <a href="http://www.facebook.com/barnproductions" class="facebook-likes" target="_new"><i class="fa fa-facebook"></i>1,156 Likes</a>
+          </div>
+        </div>
+
+        <div class="box-container">
+
+          <div class="bio-section">
+            <h2 class="no-top-padding">ABOUT</h2>
+            <div class="content"><%= raw (@site_community.about) %>
+            </div>
+            <div class="remote-container checked">
+              <span class="icon">icon</span>
+              Can Work Remotely
+            </div>
+
+            <div class="bio-section">
+              <h2>GENRES</h2>
+              <div class="content">Pop, Rock, Acoustic, Alternative</div>
+            </div>
+
+            <div class="bio-section">
+              <h2>AFFILIATED STUDIOS</h2>
+              <div class="content"><a href="https://listings.studiotime.io/en/listings/90326-barn-productions" target="_blank">Barn Productions</a></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <div id="floating-form">
+    <div class="layout-centered-content">
+
+
+      <form class="form-layout-1" id="booking-form" data-hourly-rate="100" data-day-rate="800" data-currency="$">
+
+        <div class="section no-border">
+          <div class="section-title">RATES</div>
+
+          <ul class="rate-list">
+            <li class="cf"><div class="item">Full Production</div><div class="rate">$1000/track</div></li>
+            <li class="cf"><div class="item">Mixing, Arranging</div><div class="rate">$250/track</div></li>
+            <li class="cf"><div class="item">Vocal Editing, Tuning</div><div class="rate">$60/track</div></li>
+
+          </ul>
+
+        </div>
+
+        <div class="section contact-button-container">
+          <div class="button-row">
+            <a href="#" class="btn button-1 size-plus-1 block link-talent-form">CONTACT ROB HARKNESS</a>
+          </div>
+        </div>
+
+
+        <div class="section">
+          <div class="button-row">
+            <a href="http://www.twitter.com/share?url=http://www.studiotime.io/profile/rob-harkness/" class="btn button-1 size-plus-1 block black twitter twitter-share-button" data-share-message="Check out Rob Harkness on Studiotime.io http://www.studiotime.io/profile/rob-harkness/">
+              <i class="fa fa-twitter"></i>Share On Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.studiotime.io/profile/rob-harkness/" class="btn button-1 size-plus-1 block black-1 facebook fb-share-button" data-share-url="http://www.studiotime.io/profile/rob-harkness/">
+              <i class="fa fa-facebook"></i>Share On Facebook
+            </a>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

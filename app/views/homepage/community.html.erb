@@ -24,13 +24,13 @@
     </div>
 
     <ul class="block-grid cf">
-          <% @site_communities.all.each do |site_community|  %>
-              <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
-                <a href="/engineers" class="">
-                  <span class="label-center thin"><%= site_community.designation %></span>
-                  <span class="hover-content">Find the best emerging engineers to work with and also discover those who are top in the industry.</span>
-                </a></li>
-          <% end %>
+      <% @site_communities.all.each do |site_community| %>
+          <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
+            <a href="<%= community_profile_path(site_community.slug) %>" class="">
+              <span class="label-center thin"><%= site_community.designation %></span>
+              <span class="hover-content"><%= truncate(site_community.about, :length => 200) %></span>
+            </a></li>
+      <% end %>
     </ul>
 
     <div class="text-centered">...and many more coming soon!</div>
@@ -39,11 +39,9 @@
 
   <div class="featured-artist-hero-container">
     <div class="layout-centered-content">
-      <a href="#" class="button-play video-modal-link" data-video-id="xlEHzUt2KQI" data-video-end="88">Play</a>
+      <h1 class="entry-title"> KMusic Start Up</h1>
 
-      <h1 class="entry-title">Launching Music Careers</h1>
-
-      <h2>See How Studiotime Helps Emerging Artists Like Danny Seth</h2>
+      <h2> See How Travosia Helps Bring These Boys Togather And Start A music Carrier</h2>
     </div>
   </div>
 

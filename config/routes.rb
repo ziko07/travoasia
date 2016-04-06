@@ -117,6 +117,9 @@ Kassi::Application.routes.draw do
       end
     end
 
+
+    get '/community/profile/:id', to: 'admin/site_communities#profile', :module => 'admin', controller: 'site_communities', as: :community_profile
+
     namespace :admin do
       resources :site_communities
       get "/paypal_preferences" => "paypal_preferences#index"
@@ -129,6 +132,7 @@ Kassi::Application.routes.draw do
           get :getting_started, to: 'communities#getting_started'
           get :featured_listing, to: 'listing_shapes#featured_listing'
           get :accept_feature_request, to: 'listing_shapes#accept_feature_request'
+          get :make_featured_listing_by_admin, to: 'listing_shapes#make_featured_listing_by_admin'
           get :ban_feature_request, to: 'listing_shapes#ban_feature_request'
           get :remove_featured_listing, to: 'listing_shapes#remove_featured_listing'
           get :edit_details, to: 'community_customizations#edit_details'
@@ -311,6 +315,13 @@ Kassi::Application.routes.draw do
           get :not_member
           get :cancel
           get :create_facebook_based
+          get :send_reschedule_request
+          get :accept_reschedule_request
+          get :reject_reschedule_request
+        end
+        member do
+          get :booking_list
+          get :reschedule_request_list
         end
       end
 
@@ -327,6 +338,7 @@ Kassi::Application.routes.draw do
             put :show_in_updates_email
           end
         end
+
         resources :person_messages
 
         resource :inbox, :only => [:show]

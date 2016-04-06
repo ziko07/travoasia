@@ -14,6 +14,12 @@
     <%= form.label :about, 'About' + "*", :class => "input" %>
     <%= form.text_area(:about, :class => "title_text_field") %>
 
+    <%= form.label :image, 'FaceBook Link' + "*", :class => "input" %>
+    <%= form.text_field(:facebook_url, :class => "title_text_field", :maxlength => "60") %>
+
+    <%= form.label :image, 'Twitter Link' + "*", :class => "input" %>
+    <%= form.text_field(:twitter_url, :class => "title_text_field", :maxlength => "60") %>
+
     <div class="add-category-buttons">
       <div class="inline-button-container">
         <%= form.button 'Save' %>

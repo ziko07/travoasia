@@ -7,12 +7,21 @@
           </div>
         </a>
     <% else %>
-        <a class="icon-with-text-container" href="#modal">
-          <%= icon_tag("star", ["icon-part"]) %>
-          <div class="text-part">
-            <%= t("listings.edit_links.featured_listing_request") %>
-          </div>
-        </a>
+        <%if (@current_user).has_admin_rights_in?(@current_community) %>
+            <a class="icon-with-text-container" href= "<%=  make_featured_listing_by_admin_admin_community_path(@current_community, listing_id: @listing.id) %>">
+              <%= icon_tag("star", ["icon-part"]) %>
+              <div class="text-part">
+                <%= t("listings.edit_links.make_featured_listing") %>
+              </div>
+            </a>
+        <% else %>
+            <a class="icon-with-text-container" href="#modal">
+              <%= icon_tag("star", ["icon-part"]) %>
+              <div class="text-part">
+                <%= t("listings.edit_links.featured_listing_request") %>
+              </div>
+            </a>
+        <%end%>
     <% end %>
 <% end %>
 <%#= request_featured_person_listing_path(@current_user,@listing) %>

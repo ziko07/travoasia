@@ -9,10 +9,10 @@ class Admin::SiteCommunitiesController < ApplicationController
   end
 
   def create
-  site_community =  Admin::SiteCommunity.new(site_community_params)
+    site_community = Admin::SiteCommunity.new(site_community_params)
     if site_community.save
       flash[:notice] = 'Site Community is Added Successfully'
-     redirect_to admin_site_communities_path
+      redirect_to admin_site_communities_path
     else
       flash[:error] = 'Something is worng Please try latter'
       render action: 'index'
@@ -20,11 +20,11 @@ class Admin::SiteCommunitiesController < ApplicationController
   end
 
   def edit
-    @site_community = Admin::SiteCommunity.find_by_id(params[:id])
+    @site_community = Admin::SiteCommunity.find_by_slug(params[:id])
   end
 
   def update
-    @site_community = Admin::SiteCommunity.find_by_id(params[:id])
+    @site_community = Admin::SiteCommunity.find_by_slug(params[:id])
     if @site_community.update_attributes(site_community_params)
       flash[:notice] = 'Site Community is  Successfully Updated'
       redirect_to admin_site_communities_path
@@ -35,7 +35,7 @@ class Admin::SiteCommunitiesController < ApplicationController
   end
 
   def destroy
-    @site_community = Admin::SiteCommunity.find_by_id(params[:id])
+    @site_community = Admin::SiteCommunity.find_by_slug(params[:id])
     if @site_community.destroy
       flash[:notice] = 'Site Community is  Successfully Deleted'
       redirect_to admin_site_communities_path
@@ -45,10 +45,14 @@ class Admin::SiteCommunitiesController < ApplicationController
     end
   end
 
+  def profile
+   @site_community = Admin::SiteCommunity.find_by_slug(params[:id])
+  end
+
 
   private
 
   def site_community_params
-    params.require(:admin_site_community).permit(:name, :designation, :address, :image, :about)
+    params.require(:admin_site_community).permit(:name, :designation, :address, :image, :about, :facebook_url, :twitter_url)
   end
 end

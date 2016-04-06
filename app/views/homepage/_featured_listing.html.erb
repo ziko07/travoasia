@@ -1,4 +1,4 @@
-<li class="featured-listing has-link" style="background-image: url('<%= listing.listing_images.first.image.url %>');">
+<li class="featured-listing has-link" style="background-image: url('<%= listing.listing_images.present??  listing.listing_images.first.image.url: '' %>');">
   <a href="<%= listing_path(listing) %>">
         <span class="label-bottom">
           <%= listing.title %>

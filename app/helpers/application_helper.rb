@@ -959,6 +959,16 @@ module ApplicationHelper
     block.call(stylesheet_url)
   end
 
+  def get_reschedule_status(transaction)
+   request =  RescheduleRequest.find_by_transaction_id(transaction)
+   if request.present?
+     return request.status
+   else
+      return ''
+   end
+
+  end
+
   # Render block only if big cover photo should be shown
   def with_big_cover_photo(&block)
     block.call if show_big_cover_photo?

@@ -1,0 +1,291 @@
+body {
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  /*background: #000;*/
+}
+
+body a {
+  color: #fc913b;
+  text-decoration: none;
+  outline: 0;
+}
+
+.icon {
+  font-size: 1.375em;
+  line-height: 1.09091em;
+  font-weight: 600;
+  height: 1em;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  padding-top: 0.075em;
+}
+
+.layout-centered-content {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.body-left-content {
+  max-width: 620px;
+}
+
+.bio-content {
+  padding: 0px;
+  position: relative;
+}
+
+.bio-box {
+  background: url(bg.bio.jpg) 0px 0px repeat;
+  min-height: 160px;
+  padding: 39px 20px 20px 225px;
+  text-align: left;
+  color: #ccc;
+  .main-img {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    overflow: hidden;
+    border-radius: 130px;
+    border: 3px #fff solid;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 43px;
+    left: 50px;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0px;
+    padding: 0px 0px 5px 0px;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 31px;
+    color: #ccc;
+    margin: 0px;
+    padding-bottom: 0px;
+    font-weight: 500;
+    text-transform: none;
+  }
+}
+
+.social-info {
+  .twitter-followers {
+    line-height: 21px;
+    display: inline-block;
+    background: asset-url('studiotime.graphics.01.png' image) 0px -950px no-repeat;
+    padding-left: 26px;
+    font-size: 12px;
+    color: #ccc;
+  }
+
+  .facebook-likes {
+    line-height: 21px;
+    font-size: 12px;
+    display: inline-block;
+    background: asset-url('studiotime.graphics.01.png' image) -200px -950px no-repeat;
+    padding-left: 26px;
+    font-size: 12px;
+    color: #ccc;
+  }
+
+}
+
+.box-container {
+  border: 1px #e3e3e3 solid;
+  padding: 25px;
+  background-color: #fff;
+  font-size: 13px;
+  line-height: 29px;
+  color: #333333;
+  position: relative;
+  border-radius: 3px;
+}
+
+.bio-section h2.no-top-padding {
+  padding-top: 0px;
+}
+
+.bio-section h2 {
+  font-size: 20px;
+  padding-bottom: 5px;
+  margin: 0px;
+  font-weight: 100;
+  padding-top: 0px;
+}
+
+.bio-section .remote-container {
+  padding: 20px 0px 0px 0px;
+  opacity: 1;
+}
+
+.bio-section .remote-container .icon {
+  width: 26px;
+  padding: 26px 0px 0px 0px;
+  height: 0px;
+  overflow: hidden;
+  box-sizing: content-box;
+  background: url(studiotime.graphics.01.png) 0px -2300px no-repeat;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.bio-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin: 0px;
+  font-weight: 100;
+  padding-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+#floating-form {
+  position: absolute;
+  top: 8px;
+  width: 100%;
+  height: 0px;
+  left: 42px;
+}
+
+.layout-centered-content {
+  width: 940px;
+  margin: 0px auto;
+}
+
+#floating-form form {
+  width: 300px;
+  float: right;
+  border: 1px #cccccc solid;
+  color: #fff;
+  padding: 20px;
+  background-color: #fff;
+}
+
+#floating-form form .section.no-border {
+  overflow: hidden;
+  padding-bottom: 25px;
+  color: #000;
+  padding: 45px 0px;
+  border-top: 0px;
+  padding-top: 0px;
+}
+
+#floating-form form .section .section-title {
+  font-size: 14px;
+  color: #000;
+}
+
+#floating-form form .section .rate-list {
+  margin: 0px;
+  padding: 15px 0px 15px 0px;
+}
+
+#floating-form form .section .rate-list .cf div {
+  list-style-type: none;
+  padding: 0px 0px 10px 0px;
+}
+
+#floating-form form .section .rate-list li .item {
+  font-weight: bold;
+}
+
+#floating-form form .section {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #000;
+  border-top: 1px #cccccc solid;
+  padding: 45px 0px;
+}
+
+.button-1 {
+  line-height: 60px;
+  padding: 0px 30px;
+  display: inline-block;
+  color: #fff;
+  background-color: #fc913b;
+  border: 0px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.button-1.block {
+  width: 90%;
+  display: block;
+  text-align: center;
+}
+
+.button-1.size-plus-1 {
+  line-height: 40px;
+  padding: 0px 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.button-1.size-plus-1:hover {
+  opacity: 0.75;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.button-row{
+  .black, .black-1 {
+    background-color: #000;
+  }
+ }
+
+#floating-form form .section .button-row .twitter {
+  margin-bottom: 20px;
+  background-color: #000;
+}
+
+.button-1 {
+  .icon {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    display: inline-block;
+    overflow: hidden;
+    height: 0px;
+    box-sizing: content-box;
+  }
+  &.twitter {
+    .icon {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      width: 22px;
+      padding: 15px 0px 0px 0px;
+      background: url(studiotime.graphics.01.png) 0px -2250px no-repeat;
+    }
+  }
+}
+
+.community-profile {
+    position: relative;
+}

@@ -1296,6 +1296,8 @@ en:
       requests: "Friend requests"
       settings: Settings
       sign_up: "Create account"
+      booking_list: "Booking List"
+      request_list: "Reschedule Request"
     logged_in_messages_icon:
       messages: Messages
     logged_in_notifications_icon:
@@ -1460,6 +1462,7 @@ en:
       close_listing: "Close listing"
       edit_listing: "Edit listing"
       featured_listing_request: "Request Featured Listing"
+      make_featured_listing: "Make Featured"
       featured_listing: "Feature Listing"
       reopen_listing: "Reopen listing"
       move_to_top: "Move to top of homepage"

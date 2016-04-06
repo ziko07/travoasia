@@ -52,6 +52,18 @@ class Admin::ListingShapesController < ApplicationController
       end
   end
 
+  def make_featured_listing_by_admin
+      listing = Listing.find_by_id(params[:listing_id])
+      listing.is_featured = true
+      if listing.save
+        flash[:notice] = 'Listing is Added as featured listing'
+        redirect_to listing_path(listing)
+      else
+        flash[:error] = 'Something is worng Please try latter'
+        redirect_to listing_path(listing)
+      end
+  end
+
   def  ban_feature_request
     featured_listing = FeaturedRequest.find_by_id(params[:feature_request_id])
     if featured_listing.destroy

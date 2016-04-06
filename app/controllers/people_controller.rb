@@ -312,6 +312,45 @@ class PeopleController < Devise::RegistrationsController
     end
   end
 
+  def booking_list
+      @person = @current_user
+      transaction = Transaction.where(starter_id: @person.id).map(&:id)
+      @bookings = Booking.where(transaction_id: transaction)
+  end
+
+  def reschedule_request_list
+    @person = @current_user
+    transaction = Transaction.where(listing_author_id: @person.id).map(&:id)
+    @request = RescheduleRequest.where(transaction_id: transaction)
+  end
+
+  def send_reschedule_request
+     request = RescheduleRequest.new(transaction_id: params[:transaction_id],reason: params[:reason], start_on: params[:start_on], end_on: params["end_on"], status: 'Pending')
+    if request.save
+      flash[:notice] = 'Reschedule Request is successfully send to owner'
+    else
+      flash[:error] = 'Something is worng Please try latter'
+    end
+    redirect_to booking_list_person_path(@current_user)
+  end
+
+  def accept_reschedule_request
+    request = RescheduleRequest.find_by_transaction_id(params["transaction_id"])
+    request.status = 'Accept'
+    request.save
+    booking = Booking.find_by_transaction_id(request.transaction_id)
+    booking.start_on = request.start_on
+    booking.end_on = request.end_on
+    booking.save
+    redirect_to reschedule_request_list_person_path
+  end
+
+  def reject_reschedule_request
+    request = RescheduleRequest.find_by_transaction_id(params["transaction_id"])
+    request.status = 'Reject'
+    request.save
+    redirect_to reschedule_request_list_person_path
+  end
   #This checks also that email is allowed for this community
   def check_email_availability_and_validity
     # this can be asked from community_membership page or new user page

@@ -1,0 +1,91 @@
+<% content_for :javascript do %>
+    initialize_profile_view("#{@person.username}");
+<% end %>
+<% content_for :title_header do %>
+    <h1>
+    <span class="profile-title">
+      <%= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "") %>
+    </span>
+    </h1>
+<% end %>
+
+<div class="row">
+  <div class="booking-list">
+    <% if @bookings.present? %>
+          <table id="admin_members_list">
+            <thead>
+            <tr>
+              <th>Listing Id</th>
+              <th>Start On</th>
+              <th>End On</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @bookings.each do |booking| %>
+                <tr>
+                  <td><%= booking.transaction_id %></td>
+                  <td><%= booking.start_on %></td>
+                  <td><%= booking.end_on %></td>
+                  <td><%= get_reschedule_status(booking.transaction_id) %></td>
+                  <td>
+                    <a class="reschedule-link" data-transaction-id="<%= booking.transaction_id %>" href="#">
+                      Reschedule
+                  </a>
+                  </td>
+            <% end %>
+            </tbody>
+          </table>
+    <% else %>
+        No site communities
+    <% end %>
+  </div>
+</div>
+
+<div class="remodal" data-remodal-id="modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>Request For reschedule</h1>
+  <%= form_tag send_reschedule_request_people_path, :method => "get" do %>
+      <div id="datepicker" data-locale="en" data-dateformat="mm/dd/yyyy" class="input-daterange input-group clearfix">
+        <div class="datepicker-start-wrapper">
+          <label for="From">From</label>
+          <input type="text" placeholder="mm/dd/yyyy" name="start_on" id="start-on" data-output="booking-start-output" class="input-sm form-control required">
+        </div>
+        <div class="datepicker-end-wrapper">
+          <label for="To">To</label>
+          <input type="text" placeholder="mm/dd/yyyy" name="end_on" id="end-on" data-output="booking-end-output" class="input-sm form-control required">
+        </div>
+      </div>
+
+      <%= text_area_tag 'reason','', placeholder: "Description goes here." %>
+      <br>
+      <br>
+      <%= hidden_field_tag 'transaction_id' %>
+      <%= submit_tag "Reschedule Request", class: 'remodal-confirm' %>
+      <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+  <% end %>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $( "#start-on" ).datepicker();
+        $( "#end-on" ).datepicker();
+    });
+
+    $( document ).ready(function() {
+            $(document).on('click', '.reschedule-link', function(){
+                var transaction_id = $(this).attr("data-transaction-id");
+                $('#transaction_id').val(transaction_id);
+                $('[data-remodal-id = modal]').remodal().open();
+    });
+    });
+//  function()
+//    $('.reschedule-link').click(function() {
+//        alert('test');
+//    });
+//    $(document).on('click', '.reschedule-link', function(){
+//       alert('test');
+//    });
+</script>

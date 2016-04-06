@@ -32,7 +32,7 @@
   }
 
   .featured-artist-hero-container {
-    background: rgba(0, 0, 0, 0) url("http://www.studiotime.io/wp-content/themes/sparkling-studiotime/img/banner.seth.jpg") no-repeat scroll center center / cover;
+    background: rgba(0, 0, 0, 0)  asset-url("middle_banner.png", image) no-repeat scroll center center / cover;
     color: #fff;
     overflow: hidden;
     padding: 175px 0 0;

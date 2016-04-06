@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331070641) do
+ActiveRecord::Schema.define(version: 20160406104344) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "token",            limit: 255
@@ -926,6 +926,16 @@ ActiveRecord::Schema.define(version: 20160331070641) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "reschedule_requests", force: :cascade do |t|
+    t.integer  "transaction_id", limit: 4
+    t.date     "start_on"
+    t.date     "end_on"
+    t.string   "reason",         limit: 255
+    t.string   "status",         limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", limit: 255,   null: false
     t.text     "data",       limit: 65535
@@ -964,7 +974,12 @@ ActiveRecord::Schema.define(version: 20160331070641) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.string   "slug",               limit: 255
+    t.string   "facebook_url",       limit: 255
+    t.string   "twitter_url",        limit: 255
   end
+
+  add_index "site_communities", ["slug"], name: "index_site_communities_on_slug", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
     t.float    "grade",            limit: 24
