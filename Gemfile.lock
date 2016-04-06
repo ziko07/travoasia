@@ -168,6 +168,7 @@ GEM
       railties (>= 3, < 5)
     cucumber-wire (0.0.1)
     currencies (0.4.2)
+    daemons (1.2.3)
     dalli (2.6.4)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
@@ -218,6 +219,8 @@ GEM
       riddle (>= 1.5.6)
       thinking-sphinx
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     fssm (0.2.10)
     gherkin (3.2.0)
     git-version-bump (0.15.1)
@@ -541,6 +544,7 @@ DEPENDENCIES
   connection_pool (~> 0.9.3)
   countries (~> 1.2, >= 1.2.2)
   cucumber-rails (~> 1.4.0)
+  daemons
   dalli (~> 2.6.4)
   database_cleaner (~> 1.1)
   delayed_job (~> 4.1.1)
@@ -555,6 +559,7 @@ DEPENDENCIES
   faraday (~> 0.9.1)
   faraday_middleware (~> 0.10.0)
   flying-sphinx (~> 1.2.0)
+  friendly_id
   guard-livereload (~> 1.4.0)
   guard-rspec (~> 4.3.1)
   haml (~> 4.0.5)

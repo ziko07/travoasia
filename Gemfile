@@ -81,7 +81,11 @@ gem 'paypal-sdk-merchant', '~> 1.116.0'
 gem 'airbrake', '~> 4.1.0'
 gem 'librato-rails', "~> 0.11.1"
 
+gem "daemons"
+
 gem 'jwt', '~> 1.5.2'
+
+gem 'friendly_id'
 
 # Use Oauth2 from current master, because the newest release
 # uses old JWT version
