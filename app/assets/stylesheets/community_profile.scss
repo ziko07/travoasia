@@ -77,7 +77,7 @@ body a {
   .twitter-followers {
     line-height: 21px;
     display: inline-block;
-    background: asset-url('studiotime.graphics.01.png' image) 0px -950px no-repeat;
+    background: asset-url("studiotime.graphics.01.png", image) 0px -950px no-repeat;
     padding-left: 26px;
     font-size: 12px;
     color: #ccc;
@@ -87,7 +87,7 @@ body a {
     line-height: 21px;
     font-size: 12px;
     display: inline-block;
-    background: asset-url('studiotime.graphics.01.png' image) -200px -950px no-repeat;
+    background: asset-url('studiotime.graphics.01.png', image) -200px -950px no-repeat;
     padding-left: 26px;
     font-size: 12px;
     color: #ccc;
