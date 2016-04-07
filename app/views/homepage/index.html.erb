@@ -92,7 +92,7 @@
           <li class="featured-listing" style="background:url(<%= site_community.image.url %>) center center no-repeat; background-size:cover;">
             <a href="/community" class="">
               <span class="label-center thin"><%= site_community.designation %></span>
-              <span class="hover-content"><%= truncate(site_community.about, :length => 30) %></span>
+              <span class="hover-content"><%= truncate(site_community.about, :length => 200) %></span>
             </a></li>
       <% end %>
     </ul>
