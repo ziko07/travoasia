@@ -56,6 +56,7 @@ Kassi::Application.routes.draw do
 
   get '/browse_listings', to: 'homepage#listing'
   get '/community', to: 'homepage#community'
+  get '/:locale/community', to: 'homepage#community'
   get '/countries.json', to: 'homepage#countries'
   get '/:locale/browse_listings', to: 'homepage#listing'
 

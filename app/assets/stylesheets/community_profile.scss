@@ -77,8 +77,6 @@ body a {
   .twitter-followers {
     line-height: 21px;
     display: inline-block;
-    background: asset-url("studiotime.graphics.01.png", image) 0px -950px no-repeat;
-    padding-left: 26px;
     font-size: 12px;
     color: #ccc;
   }
@@ -118,23 +116,6 @@ body a {
   padding-top: 0px;
 }
 
-.bio-section .remote-container {
-  padding: 20px 0px 0px 0px;
-  opacity: 1;
-}
-
-.bio-section .remote-container .icon {
-  width: 26px;
-  padding: 26px 0px 0px 0px;
-  height: 0px;
-  overflow: hidden;
-  box-sizing: content-box;
-  background: url(studiotime.graphics.01.png) 0px -2300px no-repeat;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
 .bio-section h2 {
   font-size: 20px;
   font-weight: bold;
@@ -162,64 +143,6 @@ body a {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-}
-
-#floating-form {
-  position: absolute;
-  top: 8px;
-  width: 100%;
-  height: 0px;
-  left: 42px;
-}
-
-.layout-centered-content {
-  width: 940px;
-  margin: 0px auto;
-}
-
-#floating-form form {
-  width: 300px;
-  float: right;
-  border: 1px #cccccc solid;
-  color: #fff;
-  padding: 20px;
-  background-color: #fff;
-}
-
-#floating-form form .section.no-border {
-  overflow: hidden;
-  padding-bottom: 25px;
-  color: #000;
-  padding: 45px 0px;
-  border-top: 0px;
-  padding-top: 0px;
-}
-
-#floating-form form .section .section-title {
-  font-size: 14px;
-  color: #000;
-}
-
-#floating-form form .section .rate-list {
-  margin: 0px;
-  padding: 15px 0px 15px 0px;
-}
-
-#floating-form form .section .rate-list .cf div {
-  list-style-type: none;
-  padding: 0px 0px 10px 0px;
-}
-
-#floating-form form .section .rate-list li .item {
-  font-weight: bold;
-}
-
-#floating-form form .section {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  color: #000;
-  border-top: 1px #cccccc solid;
-  padding: 45px 0px;
 }
 
 .button-1 {
@@ -253,11 +176,11 @@ body a {
   text-decoration: none;
 }
 
-.button-row{
+.button-row {
   .black, .black-1 {
     background-color: #000;
   }
- }
+}
 
 #floating-form form .section .button-row .twitter {
   margin-bottom: 20px;
@@ -287,5 +210,92 @@ body a {
 }
 
 .community-profile {
-    position: relative;
+  position: relative;
+  margin: 10px auto 10px auto !important;
+  .body-left-content {
+    width: 65%;
+    margin-right: 5%;
+  }
+
+  #floating-form {
+    width: 29%;
+    form {
+      width: 100%;
+      float: right;
+      border: 1px #cccccc solid;
+      color: #fff;
+      padding: 20px;
+      background-color: #fff;
+      .section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        color: #000;
+        border-top: 1px #cccccc solid;
+        padding: 45px 0px;
+        &.no-border {
+          overflow: hidden;
+          padding-bottom: 25px;
+          color: #000;
+          padding: 45px 0px;
+          border-top: 0px;
+          padding-top: 0px;
+        }
+
+        .section-title {
+          font-size: 14px;
+          color: #000;
+        }
+        .rate-list {
+          margin: 0px;
+          padding: 15px 0px 15px 0px;
+          li {
+            .item {
+              font-weight: bold;
+            }
+          }
+          .cf div {
+            list-style-type: none;
+            padding: 0px 0px 10px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 955px) {
+  .community-profile {
+    width: 94% !important;
+    margin: 10px 3% 10px 3% !important;;
+    .body-left-content {
+      width: 60%;
+      margin-right: 4%;
+    }
+    #floating-form {
+      width: 34%;
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .coverimage {
+    figure {
+      height: 4em !important;
+    }
+  }
+  .community-profile {
+    width: 94% !important;
+    margin: 10px 3% 10px 3% !important;;
+    .body-left-content {
+      width: 100%;
+      margin-right: 0;
+    }
+    .body-left-content {
+      display: block;
+      max-width: 100%;
+    }
+    #floating-form {
+      display: none;
+    }
+  }
 }

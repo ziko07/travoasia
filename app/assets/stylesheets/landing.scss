@@ -2,6 +2,8 @@
  *= require ./fonts
  *= require public
  *= require landing_community
+ *= require travoasia
+ *= require community_profile
  */
 .page-landing {
   .hero-container {
@@ -65,7 +67,11 @@
         margin-left: 2px;
         position: relative;
         width: 33%;
+        overflow: hidden;
         z-index: 100;
+        -webkit-border-radius: 0 4px 4px 0;
+        -moz-border-radius: 0 4px 4px 0;
+        border-radius: 0 4px 4px 0;
         ul {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
@@ -77,8 +83,8 @@
         }
         .current-value {
           background: #fff asset-url("sprint.png", image) no-repeat scroll 15px 16px;
-          border-bottom-right-radius: 5px;
-          border-top-right-radius: 5px;
+          //border-bottom-right-radius: 5px;
+          //border-top-right-radius: 5px;
           color: #3d3d3d;
           cursor: pointer;
           display: block;
@@ -86,7 +92,8 @@
           line-height: 60px;
           padding: 2px 40px 0;
           text-align: left;
-          //width: 100%;
+          width: 106%;
+          border: none;
         }
         .dd-icon {
           background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll 0 -50px;
@@ -397,9 +404,91 @@
   clear: both;
 }
 
+.social-icon {
+  background: #fff none repeat scroll 0 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 5px;
+  padding: 2px 6px;
+  &.s-facebook {
+    color: #46629e;
+  }
+  &.s-twitter {
+    color: #55ACEE;
+    font-size: 9px;
+    padding: 5px;
+  }
+}
+
+// Design Responsive
+
+@media only screen and (max-width: 960px) {
+  .layout-centered-content {
+    display: block;
+    width: 100%;
+  }
+
+  .template-travoasia .section ul.block-grid {
+    margin-left: 2%;
+    li {
+      background-size: 100% 100% !important;
+      width: 30%;
+    }
+  }
+
+  .template-travoasia {
+    .section ul.block-grid {
+      li {
+        &.double-wide {
+          width: 59%;
+          margin: 0 2% 2% 0;
+        }
+      }
+    }
+  }
+
+  .page-landing .hero-container form .left-input-container {
+    width: 100%;
+    input[type='text'] {
+      width: 100%;
+    }
+  }
+
+  .page-landing .hero-container {
+    h1.entry-title {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 26px;
+    }
+  }
+
+  .page-landing .hero-container form {
+    .floatright {
+      margin-top: 15px;
+    }
+    .dropdown {
+      width: 100%;
+      margin-top: 15px;
+      select {
+        width: 100%;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .template-travoasia .section ul.block-grid {
     text-align: center;
+  }
+  .template-travoasia .section ul.block-grid {
+    margin-left: 0;
+    li {
+      width: 300px;
+    }
   }
   .template-travoasia .section ul.block-grid li {
     margin: 10px 10px !important;
@@ -484,255 +573,10 @@
   }
 }
 
-// Design top nav section
-
-.header {
-  height: 3.75em;
-  width: 100%;
-}
-
-.header-left {
-  float: left;
-}
-
-.hidden-tablet {
-  display: none !important;
-}
-
-.toggle-menu a, .toggle-menu a .feedback, .toggle-menu .toggle-menu-item, .toggle-menu .toggle-menu-title, .toggle-menu .toggle-menu-item .feedback, .toggle-menu .toggle-menu-title .feedback {
-  color: white;
-  display: block;
-  padding: 0.75em;
-  position: relative;
-}
-
-.header-hover:hover {
-  background-color: #e8e8e8;
-}
-
-header {
-  font-size: 16px;
-  a {
-    color: #807d7c;
-    text-decoration: none;
-  }
-
-  .header-wrapper {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-    background: #fff none repeat scroll 0 0;
-    margin: 0 auto;
-    max-width: 63em;
-  }
-
-  .header-padding {
-    margin-left: 0.75em;
-  }
-  .header-right {
-    float: right;
-  }
-
-  .new-listing-link {
-    background: #fc0072 none repeat scroll 0 0;
-    border: 0 none;
-    border-radius: 0.3125em;
-    color: white;
-    cursor: pointer;
-    display: block;
-    height: 2.5em;
-    line-height: 2.3125em;
-    margin: 0.625em 0;
-    padding: 0 1.25em 4px;
-    text-align: center;
-  }
-
-  .header-text-link {
-    color: #3c3c3c;
-    display: block;
-    height: 3.75em;
-    line-height: 3.5625em;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-    padding-top: 2px;
-    &:hover {
-      color: #3c3c3c;
-    }
-  }
-}
-
-.header-logo {
-  display: block;
-  height: 2.5em;
-  margin-bottom: 0.625em;
-  margin-top: 0.625em;
-}
-
-.header-wide-logo {
-  background-image: url("https://sharetribe.s3.amazonaws.com/images/communities/wide_logos/20139/header/ta_338.png?1457402005");
-  background-repeat: no-repeat;
-  background-size: 10.5em auto;
-  display: inline-block;
-  height: 2.5em;
-  width: 10.5em;
-}
-
-.header-menu-container {
-  display: block;
-  height: 3.75em;
-  padding: 0.625em 0.75em;
-}
-
-.header-menu-toggle-container {
-  background: #e8e8e8 none repeat scroll 0 0;
-  border: 0 none;
-  border-radius: 0.3125em;
-  color: #3c3c3c;
-  cursor: pointer;
-  display: table;
-  height: 2.5em;
-  line-height: 2.3125em;
-  margin: 0;
-  padding: 0 0.75em;
-  text-align: center;
-  &:hover {
-    background: #dbdbdb none repeat scroll 0 0;
-    color: white;
-  }
-}
-
-.toggle-menu {
-  background: #474747 none repeat scroll 0 0;
-  border-color: #474747 !important;
-  margin-bottom: 0.75em;
-  position: relative;
-  text-align: left;
-  z-index: 99999;
-}
-
-.header-toggle-menu-menu {
-  min-width: 12.5em;
-  position: absolute;
-}
-
-.icon-with-text {
-  display: inline-block;
-  padding-right: 0.25em;
-  position: relative;
-  top: 0.125em;
-}
-
-.toggle-menu a:hover, .toggle-menu .toggle-menu-link:hover {
-  background: #fc0072 none repeat scroll 0 0;
-  color: white;
-  opacity: 1;
-}
-
-.toggle-menu.hidden {
-  display: none;
-}
-
-.header-toggle-menu-user {
-  min-width: 12.5em;
-  position: absolute;
-}
-
-.header-user-toggle {
-  display: block;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  padding-left: 0.75em;
-}
-
-.left {
-  float: left;
-}
-
-.toggle.toggled {
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: #474747;
-  background-image: none;
-  background-origin: padding-box;
-  background-position: 0 0;
-  background-repeat: repeat;
-  background-size: auto auto;
-  border-bottom-color: #474747;
-  border-left-color: #474747;
-  border-right-color: #474747;
-  border-top-color: #474747;
-  color: white !important;
-}
-
-.toggle.toggled {
-  color: white !important;
-}
-
-.toggle {
-  cursor: pointer;
-}
-
-.header-hover.toggled {
-  background-color: #474747;
-}
-
-.toggled .header-text-link {
-  color: white;
-  &:hover {
-    color: white;
-  }
-}
-
-.toggled .header-menu-toggle-container {
-  background-color: #474747;
-  color: white;
-}
-
-.header-user-avatar {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  display: block;
-  height: 2.5em;
-  margin-bottom: 0.625em;
-  margin-top: 0.625em;
-}
-
-.badge {
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: #fc0072;
-  background-image: none;
-  background-origin: padding-box;
-  background-position: 0 0;
-  background-repeat: repeat;
-  background-size: auto auto;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: white;
-  height: 20px;
-  left: 1.4375em;
-  line-height: 19px;
-  position: absolute;
-  text-align: center;
-  top: 1.6em;
-  width: 20px;
-  left: 41em;
-}
-
-.mobile-badge {
-  background-color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: #474747;
-  display: inline-block;
-  height: 20px;
-  line-height: 19px;
-  margin-left: 0.75em;
-  text-align: center;
-  width: 20px;
+.marketplace-lander figure.marketplace-cover-small {
+  background-image: url("https://sharetribe.s3.amazonaws.com/images/communities/small_cover_photos/20139/hd_header/banner_image.jpg?1456890969");
+  height: 6em;
+  background-size: cover;
+  background-position: center center;
 }
 

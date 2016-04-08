@@ -47,6 +47,7 @@ class Admin::SiteCommunitiesController < ApplicationController
 
   def profile
    @site_community = Admin::SiteCommunity.find_by_slug(params[:id])
+   render layout: 'landing'
   end
 
 

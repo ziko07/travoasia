@@ -1,9 +1,8 @@
-<%= render partial: 'layouts/global_header' %>
 <div class="template-travoasia page-landing responsive">
   <div class="hero-container">
     <div class="layout-centered-content">
       <!--<div class="bgvid">-->
-        <!--<figure class="marketplace-cover fluidratio home-page-cover-photo" style="background-image: url(<%#= @current_community.cover_photo.url(:original) %>)"></figure>-->
+      <!--<figure class="marketplace-cover fluidratio home-page-cover-photo" style="background-image: url(<%#= @current_community.cover_photo.url(:original) %>)"></figure>-->
       <!--</div>-->
       <video autoplay loop poster="<%= @current_community.cover_photo.url(:original) %>" id="bgvid">
 
@@ -44,7 +43,7 @@
     <ul class="block-grid cf">
       <% if @landing_images.present? %>
           <% @landing_images.each do |images| %>
-              <li class="<%= images.position.to_i.odd? ? 'double-wide' : 'no-right-margin' %>" style="background:url(<%= images.image.url %>) center center no-repeat; background-size:cover;">
+              <li class="<%= images.position.to_i.odd? ? 'double-wide' : 'no-right-margin' %>" style="background:url(<%= images.image.url %>) center center no-repeat; background-size: 100% 100%;">
                 <a href="<%= browse_listings_path(category: get_category(images.city)) %>">
                   <span class="label-center"><%= images.city %></span>
                 </a>
@@ -199,13 +198,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-m1XVD7c3PfBX_oxxKijOqeyNNqOSUW0&libraries=places&callback=init_autocomplete" async defer></script>
 
 <script type="text/javascript">
-    //    $(function () {
-    //        $("#autocomplete").geocomplete({
-    //            details: ".geo-details",
-    //            detailsAttribute: "data-geo"
-    //        });
-    //
-    //    });
 
     var autocomplete;
     function init_autocomplete() {
@@ -251,7 +243,6 @@
         }
 
         $('#q').val(query);
-//    $('#q').parents('form').submit();
     }
 
     function noSubmitOnReturn(e) {
