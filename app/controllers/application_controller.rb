@@ -143,6 +143,20 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def get_search_location(q)
+    location = {lat: 0, lon: 0, state: ''}
+    geocoder = Geokit::Geocoders::GoogleGeocoder.geocode(q.to_s)
+    if geocoder.success
+      location[:lat] = geocoder.lat
+      location[:lon] = geocoder.lng
+      location[:state] = geocoder.state_name.present? ? geocoder.state_name : geocoder.city
+    else
+      location[:state] = q
+    end
+    location
+  end
+
+
   # If URL contains locale parameter that doesn't match with the selected locale,
   # redirect to the selected locale
   def redirect_locale_param

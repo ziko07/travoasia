@@ -103,7 +103,13 @@ class HomepageController < ApplicationController
       search_result.on_success { |listings|
         @listings = listings
 
-        @listings = @listings.delete_if{|x| Listing.find_by_id(x.id).open == false}
+        if params[:q].present?
+          geo_location = get_search_location(params[:q])
+        end
+
+        # @listings = @listings.delete_if{|x| Listing.find_by_id(x.id).open == false}
+        @listings = @listings.sort!{ |a, b| sort_criteria(a.id,geo_location) <=> sort_criteria(b.id,geo_location) }
+
         render locals: {
                  shapes: all_shapes,
                  filters: filters,

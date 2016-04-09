@@ -1023,4 +1023,31 @@ module ApplicationHelper
       end
     end
   end
+
+
+  def sort_criteria(listing_id,geolocation)
+    #get feedback
+    listing =  Listing.find_by_id(listing_id)
+    feedback = listing.author.received_positive_testimonials.count
+
+    #get location distance
+    location = Location.find_by_listing_id(listing_id)
+    lat1 = location.latitude
+    lon1 = location.longitude
+    lat2 = geolocation[:lat]
+    lon2 = geolocation[:lon]
+    pai = 0.017453292519943295; # Math.PI / 180
+    distance = 0.5 - Math.cos((lat2 - lat1) * pai)/2 +
+        Math.cos(lat1 * pai) * Math.cos(lat2 * pai) *
+            (1 - Math.cos((lon2 - lon1) * pai))/2
+
+    distance = 12742 * Math.asin(Math.sqrt(distance))
+
+    date =  Date.today - listing.created_at.to_date
+
+    final_distance = distance / 10 + (feedback * -1) + date
+
+    return final_distance
+
+  end
 end
