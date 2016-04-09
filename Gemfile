@@ -46,9 +46,9 @@ gem 'flying-sphinx', "~>1.2.0"
 # Use patched v2.0.2
 # Fixes issues: Create a new delayed delta job if there is an existing delta job which has failed
 gem 'ts-delayed-delta', "~>2.0.2",
-  :git    => 'git://github.com/pat/ts-delayed-delta.git',
-  :branch => 'master',
-  :ref    => '839284f2f28b3f4caf3a3bf5ccde9a6d222c7f4d'
+    :git => 'git://github.com/pat/ts-delayed-delta.git',
+    :branch => 'master',
+    :ref => '839284f2f28b3f4caf3a3bf5ccde9a6d222c7f4d'
 gem 'possibly', '~> 0.2.0'
 
 gem 'delayed_job', "~> 4.1.1"
@@ -67,9 +67,9 @@ gem 'money-rails', "~>1.3.0"
 
 # The latest release (0.9.0) is not Rails 4 compatible
 gem 'mercury-rails',
-  git: 'git://github.com/jejacks0n/mercury.git',
-  branch: 'master',
-  ref: '1cc637b0bccea19085f824d2881c6513ed5ee8ae'
+    git: 'git://github.com/jejacks0n/mercury.git',
+    branch: 'master',
+    ref: '1cc637b0bccea19085f824d2881c6513ed5ee8ae'
 
 gem 'countries', '~> 1.2', '>= 1.2.2'
 gem 'braintree', "~> 2.30.0"
@@ -92,9 +92,9 @@ gem 'friendly_id'
 # uses old JWT version
 # (This can be removed when oauth2 version > 1.1.0 is released)
 gem 'oauth2',
-  git: 'git://github.com/intridea/oauth2.git',
-  branch: 'master',
-  ref: 'e0006cb5099bf392f011eb5c49cbec4f893bbdba'
+    git: 'git://github.com/intridea/oauth2.git',
+    branch: 'master',
+    ref: 'e0006cb5099bf392f011eb5c49cbec4f893bbdba'
 
 gem 'lograge', "~> 0.3.2"
 gem 'public_suffix', "~> 1.5.1" # Needed currently to set GA hostname right, probably not
@@ -171,3 +171,5 @@ group :development, :test do
   gem 'pry-nav', '~> 0.2.3'
   gem 'pry-stack_explorer', '~> 0.4.9.1'
 end
+
+gem 'meta-tags'
