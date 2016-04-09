@@ -33,7 +33,7 @@
           </a> &nbsp;
           <a href="http://www.facebook.com/<%= @site_community.facebook_url %>" class="facebook-likes" target="_new">
             <i class="social-icon s-facebook icon-facebook"> </i>
-            <%= facebook_likes(@site_community.facebook_url) %> Likes
+            <%= facebook_likes(@site_community.facebook_url, 'like_count') %> Likes
           </a>
         </div>
       </div>
@@ -100,7 +100,7 @@
           <a href="http://www.twitter.com/share?url=" class="btn button-1 size-plus-1 block black twitter twitter-share-button" data-share-message="Check out Rob Harkness on Studiotime.io http://www.studiotime.io/profile/rob-harkness/">
             <i class="fa fa-twitter"></i>Share On Twitter
           </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=" class="btn button-1 size-plus-1 block black-1 facebook fb-share-button" data-share-url="http://www.studiotime.io/profile/rob-harkness/">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=<%= community_profile_url(@site_community.slug) %>" class="btn button-1 size-plus-1 block black-1 facebook fb-share-button" data-share-url="http://www.studiotime.io/profile/rob-harkness/">
             <i class="fa fa-facebook"></i>Share On Facebook
           </a>
         </div>

@@ -1,12 +1,13 @@
 require 'will_paginate/array'
 
 class ApplicationController < ActionController::Base
-  class FeatureFlagNotEnabledError < StandardError; end
+  class FeatureFlagNotEnabledError < StandardError;
+  end
 
   module DefaultURLOptions
     # Adds locale to all links
     def default_url_options
-      { :locale => I18n.locale }
+      {:locale => I18n.locale}
     end
   end
 
@@ -16,27 +17,29 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
 
+  before_action :prepare_meta_tags, if: 'request.get?'
+
   before_filter :check_http_auth,
-    :check_auth_token,
-    :fetch_community,
-    :fetch_community_plan_expiration_status,
-    :perform_redirect,
-    :fetch_logged_in_user,
-    :save_current_host_with_port,
-    :fetch_community_membership,
-    :redirect_removed_locale,
-    :set_locale,
-    :redirect_locale_param,
-    :generate_event_id,
-    :set_default_url_for_mailer,
-    :fetch_community_admin_status,
-    :warn_about_missing_payment_info,
-    :set_homepage_path,
-    :report_queue_size,
-    :maintenance_warning
-  before_filter :cannot_access_without_joining, :except => [ :confirmation_pending, :check_email_availability]
+                :check_auth_token,
+                :fetch_community,
+                :fetch_community_plan_expiration_status,
+                :perform_redirect,
+                :fetch_logged_in_user,
+                :save_current_host_with_port,
+                :fetch_community_membership,
+                :redirect_removed_locale,
+                :set_locale,
+                :redirect_locale_param,
+                :generate_event_id,
+                :set_default_url_for_mailer,
+                :fetch_community_admin_status,
+                :warn_about_missing_payment_info,
+                :set_homepage_path,
+                :report_queue_size,
+                :maintenance_warning
+  before_filter :cannot_access_without_joining, :except => [:confirmation_pending, :check_email_availability]
   before_filter :can_access_only_organizations_communities
-  before_filter :check_email_confirmation, :except => [ :confirmation_pending, :check_email_availability_and_validity]
+  before_filter :check_email_confirmation, :except => [:confirmation_pending, :check_email_availability_and_validity]
 
   # This updates translation files from WTI on every page load. Only useful in translation test servers.
   before_filter :fetch_translations if APP_CONFIG.update_translations_on_every_page_load == "true"
@@ -47,6 +50,7 @@ class ApplicationController < ActionController::Base
   rescue_from RestClient::Unauthorized, :with => :session_unauthorized
 
   helper_method :root, :logged_in?, :current_user?
+  helper_method :asset_url
 
   def redirect_removed_locale
     if params[:locale] && Kassi::Application.config.REMOVED_LOCALES.include?(params[:locale])
@@ -88,11 +92,11 @@ class ApplicationController < ActionController::Base
     # We should fix this -- END
 
     locale = I18nHelper.select_locale(
-      user_locale: user_locale,
-      param_locale: params[:locale],
-      community_locales: community_locales,
-      community_default: community_default_locale,
-      all_locales: Sharetribe::AVAILABLE_LOCALES
+        user_locale: user_locale,
+        param_locale: params[:locale],
+        community_locales: community_locales,
+        community_default: community_default_locale,
+        all_locales: Sharetribe::AVAILABLE_LOCALES
     )
 
     raise ArgumentError.new("Locale #{locale} not available. Check your community settings") unless available_locales.collect { |l| l[1] }.include?(locale)
@@ -107,7 +111,7 @@ class ApplicationController < ActionController::Base
     # redirected after the locale is changed
     new_path = request.fullpath.clone
     new_path.slice!("/#{params[:locale]}")
-    new_path.slice!(0,1) if new_path =~ /^\//
+    new_path.slice!(0, 1) if new_path =~ /^\//
     @return_to = new_path
 
     Maybe(@current_community).each { |community|
@@ -119,27 +123,27 @@ class ApplicationController < ActionController::Base
     present = ->(x) { x.present? }
 
     @homepage_path =
-      case [@current_community, @current_user, params[:locale]]
-      when matches([nil, __, __])
-        # FIXME We still have controllers that inherit application controller even though
-        # they do not have @current_community
-        #
-        # Return nil, do nothing, but don't break
-        nil
+        case [@current_community, @current_user, params[:locale]]
+          when matches([nil, __, __])
+            # FIXME We still have controllers that inherit application controller even though
+            # they do not have @current_community
+            #
+            # Return nil, do nothing, but don't break
+            nil
 
-      when matches([present, nil, present])
-        # We don't have @current_user.
-        # Take the locale from URL param, and keep it in the URL if the locale
-        # differs from community default
-        if params[:locale] != @current_community.default_locale.to_s
-          homepage_with_locale_path
-        else
-          homepage_without_locale_path(locale: nil)
+          when matches([present, nil, present])
+            # We don't have @current_user.
+            # Take the locale from URL param, and keep it in the URL if the locale
+            # differs from community default
+            if params[:locale] != @current_community.default_locale.to_s
+              homepage_with_locale_path
+            else
+              homepage_without_locale_path(locale: nil)
+            end
+
+          else
+            homepage_without_locale_path(locale: nil)
         end
-
-      else
-        homepage_without_locale_path(locale: nil)
-      end
   end
 
 
@@ -236,36 +240,36 @@ class ApplicationController < ActionController::Base
   def perform_redirect
     community = Maybe(@current_community).map { |c|
       {
-        ident: c.ident,
-        domain: c.domain,
-        deleted: c.deleted?,
-        use_domain: c.use_domain?,
-        domain_verification_file: c.dv_test_file_name,
-        closed: Maybe(@current_plan)[:closed].or_else(false)
+          ident: c.ident,
+          domain: c.domain,
+          deleted: c.deleted?,
+          use_domain: c.use_domain?,
+          domain_verification_file: c.dv_test_file_name,
+          closed: Maybe(@current_plan)[:closed].or_else(false)
       }
     }.or_else(nil)
 
     paths = {
-      community_not_found: Maybe(APP_CONFIG).community_not_found_redirect.map { |url| {url: url} }.or_else({route_name: :community_not_found_path}),
-      new_community: {route_name: :new_community_path}
+        community_not_found: Maybe(APP_CONFIG).community_not_found_redirect.map { |url| {url: url} }.or_else({route_name: :community_not_found_path}),
+        new_community: {route_name: :new_community_path}
     }
 
     configs = {
-      always_use_ssl: Maybe(APP_CONFIG).always_use_ssl.map { |v| v == true || v.to_s.downcase == "true" }.or_else(false), # value can be string if it comes from ENV
-      app_domain: URLUtils.strip_port_from_host(APP_CONFIG.domain),
+        always_use_ssl: Maybe(APP_CONFIG).always_use_ssl.map { |v| v == true || v.to_s.downcase == "true" }.or_else(false), # value can be string if it comes from ENV
+        app_domain: URLUtils.strip_port_from_host(APP_CONFIG.domain),
     }
 
     other = {
-      no_communities: Community.count == 0,
-      community_search_status: community_search_status,
+        no_communities: Community.count == 0,
+        community_search_status: community_search_status,
     }
 
     MarketplaceRouter.needs_redirect(
-      request: request_hash,
-      community: community,
-      paths: paths,
-      configs: configs,
-      other: other) { |redirect_dest|
+        request: request_hash,
+        community: community,
+        paths: paths,
+        configs: configs,
+        other: other) { |redirect_dest|
       url = redirect_dest[:url] || send(redirect_dest[:route_name], protocol: redirect_dest[:protocol])
 
       redirect_to(url, status: redirect_dest[:status])
@@ -290,11 +294,11 @@ class ApplicationController < ActionController::Base
 
   def request_hash
     @request_hash ||= {
-      host: request.host,
-      protocol: request.protocol,
-      fullpath: request.fullpath,
-      port_string: request.port_string,
-      headers: request.headers
+        host: request.host,
+        protocol: request.protocol,
+        fullpath: request.fullpath,
+        port_string: request.port_string,
+        headers: request.headers
     }
   end
 
@@ -336,7 +340,7 @@ class ApplicationController < ActionController::Base
 
   # Before filter to direct a logged-in non-member to join tribe form
   def cannot_access_without_joining
-    if @current_user && ! (@current_community_membership || @current_user.is_admin?)
+    if @current_user && !(@current_community_membership || @current_user.is_admin?)
 
       # Check if banned
       if @current_community && @current_user && @current_user.banned_at?(@current_community)
@@ -352,7 +356,7 @@ class ApplicationController < ActionController::Base
 
   def can_access_only_organizations_communities
     if (@current_community && @current_community.only_organizations) &&
-      (@current_user && !@current_user.is_organization)
+        (@current_user && !@current_user.is_organization)
 
       sign_out @current_user
       flash[:warning] = t("layouts.notifications.can_not_login_with_private_user")
@@ -391,7 +395,7 @@ class ApplicationController < ActionController::Base
   def warn_about_missing_payment_info
     if @current_user && PaypalHelper.open_listings_with_missing_payment_info?(@current_user.id, @current_community.id)
       settings_link = view_context.link_to(t("paypal_accounts.from_your_payment_settings_link_text"),
-        payment_settings_path(:paypal, @current_user), target: "_blank")
+                                           payment_settings_path(:paypal, @current_user), target: "_blank")
       warning = t("paypal_accounts.missing", settings_link: settings_link)
       flash.now[:warning] = warning.html_safe
     end
@@ -405,6 +409,41 @@ class ApplicationController < ActionController::Base
     now = Time.now
     @show_maintenance_warning = NextMaintenance.show_warning?(15.minutes, now)
     @minutes_to_maintenance = NextMaintenance.minutes_to(now)
+  end
+
+  def prepare_meta_tags(options={})
+    site_name = 'Travoasia'
+    title = [controller_name, action_name].join(' ')
+    current_url = request.url
+    image = options[:image] || ''
+    description = options[:description] || ''
+    defaults = {
+        site: site_name,
+        title: options[:title] || title,
+        keywords: %w[travel asia tour rent online],
+        twitter: {
+            site_name: site_name,
+            site: '@travoasia',
+            card: 'summary',
+            description: description,
+            image: image
+        },
+        og: {
+            url: current_url,
+            site_name: site_name,
+            title: options[:title] || title,
+            image: image,
+            description: description,
+            type: 'website'
+        }
+    }
+
+    options.reverse_merge!(defaults)
+    set_meta_tags options
+  end
+
+  def asset_url asset
+    "#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_path(asset)}"
   end
 
   private

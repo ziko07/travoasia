@@ -980,13 +980,13 @@ module ApplicationHelper
     end
   end
 
-  def facebook_likes(profile)
-    page_url = "https://www.facebook.com/#{profile}"
+  def facebook_likes(profile, field)
+    page_url = field == 'like_count' ? "https://www.facebook.com/#{profile}" : profile
     fql = "SELECT url, share_count, like_count, comment_count, total_count FROM link_stat WHERE url='#{page_url}'"
     uri = URI("https://api.facebook.com/method/fql.query?format=json&query=#{URI::encode(fql)}")
     data = Net::HTTP.get(uri)
     likes = JSON.parse(data)
-    likes[0]['like_count']
+    likes[0][field]
   end
 
   # Render block only if big cover photo should be shown
