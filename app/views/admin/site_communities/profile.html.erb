@@ -28,13 +28,18 @@
         <h2 class="subheader"><%= @site_community.address %></h2>
 
         <div class="social-info">
-          <a href="http://www.twitter.com/<%= @site_community.twitter_url %>" class="twitter-followers" target="_new">
-            <i class="social-icon s-twitter icon-twitter"></i> 1,342 Followers
-          </a> &nbsp;
-          <a href="http://www.facebook.com/<%= @site_community.facebook_url %>" class="facebook-likes" target="_new">
-            <i class="social-icon s-facebook icon-facebook"> </i>
-            <%= facebook_likes(@site_community.facebook_url, 'like_count') %> Likes
-          </a>
+          <% if @site_community.twitter_url.present? %>
+              <a href="http://www.twitter.com/<%= @site_community.twitter_url %>" class="twitter-followers" target="_new">
+                <i class="social-icon s-twitter icon-twitter"></i> 1,342 Followers
+              </a>
+          <%end  %>
+           &nbsp;
+          <% if @site_community.facebook_url.present?  %>
+              <a href="http://www.facebook.com/<%= @site_community.facebook_url %>" class="facebook-likes" target="_new">
+                <i class="social-icon s-facebook icon-facebook"> </i>
+                <%= facebook_likes(@site_community.facebook_url, 'like_count') %> Likes
+              </a>
+          <% end %>
         </div>
       </div>
 
@@ -90,7 +95,7 @@
 
       <div class="section contact-button-container">
         <div class="button-row">
-          <a href="#" class="btn button-1 size-plus-1 block link-talent-form">CONTACT ROB HARKNESS</a>
+          <a href="#modal" class="btn button-1 size-plus-1 block link-talent-form">CONTACT ROB HARKNESS</a>
         </div>
       </div>
 
@@ -108,4 +113,24 @@
 
     </form>
   </div>
+</div>
+
+
+<div class="remodal" data-remodal-id="modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>Contact With <%= (@site_community.name) %></h1>
+  <%= form_tag send_contact_email_path(@site_community.slug),:method => "get" do %>
+      <%= text_field_tag 'name','', placeholder: "Name", required:true %>
+      <br>
+      <br>
+      <%= text_field_tag 'email','', placeholder: "Email", required:true %>
+      <br>
+      <br>
+      <%= text_area_tag 'description','', placeholder: "Description goes here." %>
+      <br>
+      <br>
+      <%= submit_tag "Submit", class: 'remodal-confirm' %>
+      <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+  <% end %>
+
 </div>

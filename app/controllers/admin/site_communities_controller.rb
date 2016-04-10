@@ -54,10 +54,16 @@ class Admin::SiteCommunitiesController < ApplicationController
     render layout: 'landing'
   end
 
+  def send_contact_email
+    site_community =  Admin::SiteCommunity.find_by_slug(params[:id])
+    MailCarrier.deliver_now(PersonMailer.new_community_profile_contact_email(site_community.email,params[:name],params[:email], params[:description],@current_community))
+    redirect_to community_profile_path(site_community)
+  end
+
 
   private
 
   def site_community_params
-    params.require(:admin_site_community).permit(:name, :designation, :address, :image, :about, :facebook_url, :twitter_url)
+    params.require(:admin_site_community).permit(:name,:email, :designation, :address, :image, :about, :facebook_url, :twitter_url)
   end
 end

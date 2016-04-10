@@ -986,7 +986,9 @@ module ApplicationHelper
     uri = URI("https://api.facebook.com/method/fql.query?format=json&query=#{URI::encode(fql)}")
     data = Net::HTTP.get(uri)
     likes = JSON.parse(data)
-    likes[0][field]
+    if likes.present?
+      likes[0][field]
+    end
   end
 
   # Render block only if big cover photo should be shown

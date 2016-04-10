@@ -49,6 +49,18 @@ class PersonMailer < ActionMailer::Base
     end
   end
 
+
+  def new_community_profile_contact_email(rcv_email, sender_name, sender_email, description, community)
+    @description = description
+    @name = sender_name
+      @message = message
+      sending_params = {:to => rcv_email,
+                        :subject => t("New Contact", :sender_name => sender_name),
+                        :from => sender_email}
+
+      premailer_mail(sending_params)
+  end
+
   def new_payment(payment, community)
     @email_type =  "email_about_new_payments"
     @payment = payment

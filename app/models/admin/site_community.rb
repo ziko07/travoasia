@@ -17,6 +17,7 @@
 #  slug               :string(255)
 #  facebook_url       :string(255)
 #  twitter_url        :string(255)
+#  email              :string(255)
 #
 # Indexes
 #

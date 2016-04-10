@@ -120,6 +120,7 @@ Kassi::Application.routes.draw do
 
 
     get '/community/profile/:id', to: 'admin/site_communities#profile', :module => 'admin', controller: 'site_communities', as: :community_profile
+    get '/community/profile/:id/send_contact_email', to: 'admin/site_communities#send_contact_email', :module => 'admin', controller: 'site_communities', as: :send_contact_email
 
     namespace :admin do
       resources :site_communities

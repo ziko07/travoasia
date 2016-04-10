@@ -1,4 +1,7 @@
 <%= form_for @site_community, :html => {:multipart => true} do |form| %>
+    <%= form.label :name, 'email' + "*", :class => "input" %>
+    <%= form.text_field(:email, :class => "title_text_field", required: true, :maxlength => "60") %>
+
     <%= form.label :name, 'Name' + "*", :class => "input" %>
     <%= form.text_field(:name, :class => "title_text_field", :maxlength => "60") %>
 

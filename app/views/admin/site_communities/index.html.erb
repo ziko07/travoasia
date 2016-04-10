@@ -17,6 +17,7 @@
             <thead>
             <tr>
                 <th>Name</th>
+                <th>Email</th>
                 <th>Designation</th>
                 <th>Address</th>
                 <th>Image</th>
@@ -29,6 +30,7 @@
             <% @site_communities.each do |site_community| %>
                 <tr>
                     <td><%= site_community.name %></td>
+                    <td><%= site_community.email %></td>
                     <td><%= site_community.designation %></td>
                     <td><%= site_community.address %></td>
                     <td><%= image_tag(site_community.image.url,width:40) %></td>

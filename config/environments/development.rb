@@ -54,20 +54,31 @@ Kassi::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
-  if APP_CONFIG.mail_delivery_method == "sendmail"
-    ActionMailer::Base.delivery_method = :sendmail
-  elsif APP_CONFIG.mail_delivery_method == "smtp"
-    # Enable sending mail from localhost
-    ActionMailer::Base.smtp_settings = {
-      :address              => APP_CONFIG.smtp_email_address,
-      :port                 => APP_CONFIG.smtp_email_port,
-      :domain               => APP_CONFIG.smtp_email_domain || 'localhost',
-      :user_name            => APP_CONFIG.smtp_email_user_name,
-      :password             => APP_CONFIG.smtp_email_password,
-      :authentication       => 'plain',
-      :enable_starttls_auto => true
-    }
-  end
+  # if APP_CONFIG.mail_delivery_method == "sendmail"
+  #   ActionMailer::Base.delivery_method = :sendmail
+  # elsif APP_CONFIG.mail_delivery_method == "smtp"
+  #   # Enable sending mail from localhost
+  #   ActionMailer::Base.smtp_settings = {
+  #     :address              => APP_CONFIG.smtp_email_address,
+  #     :port                 => APP_CONFIG.smtp_email_port,
+  #     :domain               => APP_CONFIG.smtp_email_domain || 'localhost',
+  #     :user_name            => APP_CONFIG.smtp_email_user_name,
+  #     :password             => APP_CONFIG.smtp_email_password,
+  #     :authentication       => 'plain',
+  #     :enable_starttls_auto => true
+  #   }
+  # end
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      user_name:            'mahabubziko@gmail.com',
+      password:             '01723833145',
+      authentication:       'plain',
+      enable_starttls_auto: true  }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
 
   # Expands the lines which load the assets
