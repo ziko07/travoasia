@@ -41,6 +41,7 @@
 
       <%= label_tag :name, 'Image Position' + "*", :class => "input" %>
       <%= select_tag "landing_page[position]", options_for_select([ "1", "2","3", "4" ]), prompt: "Select Position" %>
+      <span style="font-size: 12px; font-style: italic; font-weight: bold;">  <i class="icon-info-sign"></i> Please Use 620X300 for Position 1 and 3 . 300X300 for 2 and 4</span>
       <%= label_tag :name, 'Image' + "*", :class => "input" %>
       <%= file_field_tag 'landing_page[image]' %>
 
