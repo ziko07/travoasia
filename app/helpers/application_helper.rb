@@ -1,7 +1,7 @@
 # encoding: utf-8
 module ApplicationHelper
 
-  ICON_PACK = APP_CONFIG.icon_pack || "font-awesome"
+  ICON_PACK = "font-awesome" #APP_CONFIG.icon_pack || "font-awesome"
 
   ICONS = {
       "ss-pika" => {
@@ -647,6 +647,13 @@ module ApplicationHelper
             :path => admin_site_communities_path,
             :name => "manage_site_community"
         },
+        {
+            :topic => :manage,
+            :text => 'General Settings',
+            :icon_class => icon_class("fa fa-cog"),
+            :path => admin_general_settings_path,
+            :name => "manage_site_custom_settings"
+        },
 
         {
             :topic => :manage,
@@ -685,7 +692,7 @@ module ApplicationHelper
         },
         {
             :topic => :configure,
-            :text => 'Change Landing Page Image',
+            :text => 'Landing Images',
             :icon_class => "ss-paintroller",
             :path => edit_landing_page_image_admin_community_path(@current_community),
             :name => "edit_landing_image"
@@ -1027,9 +1034,9 @@ module ApplicationHelper
   end
 
 
-  def sort_criteria(listing_id,geolocation)
+  def sort_criteria(listing_id, geolocation)
     #get feedback
-    listing =  Listing.find_by_id(listing_id)
+    listing = Listing.find_by_id(listing_id)
     feedback = listing.author.received_positive_testimonials.count
 
     #get location distance
@@ -1045,7 +1052,7 @@ module ApplicationHelper
 
     distance = 12742 * Math.asin(Math.sqrt(distance))
 
-    date =  Date.today - listing.created_at.to_date
+    date = Date.today - listing.created_at.to_date
 
     final_distance = distance / 10 + (feedback * -1) + date
 

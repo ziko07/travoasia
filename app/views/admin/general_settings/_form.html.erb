@@ -1,0 +1,40 @@
+<%= form_for @general_settings, :html => {:multipart => true} do |form| %>
+    <%= form.label :community_header, 'Community Banner Header Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page banner image top header text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_header, :class => "title_text_field", required: true, :maxlength => "60") %>
+
+    <%= form.label :community_sub_header, 'Community Banner Sub Header Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page banner image top sub header text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_sub_header, :class => "title_text_field", :maxlength => "60") %>
+
+    <%= form.label :community_banner, 'Community Banner', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page banner image, Image size should be 1200x350px</p>
+      </div>
+    </div>
+    <%= form.file_field(:community_banner, :class => "title_text_field", :maxlength => "60") %>
+
+    <div class="add-category-buttons">
+      <div class="inline-button-container">
+        <%= form.button 'Save' %>
+      </div>
+    </div>
+<% end %>

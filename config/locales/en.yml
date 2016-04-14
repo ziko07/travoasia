@@ -1,4 +1,7 @@
 en:
+  site:
+    community_header: 'KMusic Start Up'
+    community_sub_header: 'See How Travosia Helps Bring These Boys Togather And Start A music Carrier'
   admin:
     categories:
       edit:

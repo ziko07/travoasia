@@ -36,7 +36,8 @@ class ApplicationController < ActionController::Base
                 :warn_about_missing_payment_info,
                 :set_homepage_path,
                 :report_queue_size,
-                :maintenance_warning
+                :maintenance_warning,
+                :load_general_settings
   before_filter :cannot_access_without_joining, :except => [:confirmation_pending, :check_email_availability]
   before_filter :can_access_only_organizations_communities
   before_filter :check_email_confirmation, :except => [:confirmation_pending, :check_email_availability_and_validity]
@@ -474,6 +475,10 @@ class ApplicationController < ActionController::Base
 
   def date_equals?(date, comp)
     date && date.to_date.eql?(comp)
+  end
+
+  def load_general_settings
+    @general_settings = Admin::GeneralSetting.first || Admin::GeneralSetting.new
   end
 
   def session_unauthorized

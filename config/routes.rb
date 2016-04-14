@@ -124,6 +124,7 @@ Kassi::Application.routes.draw do
 
     namespace :admin do
       resources :site_communities
+      resources :general_settings, only: [:index, :update]
       get "/paypal_preferences" => "paypal_preferences#index"
       post "/paypal_preferences/preferences_update" => "paypal_preferences#preferences_update"
       get "/paypal_preferences/account_create" => "paypal_preferences#account_create"

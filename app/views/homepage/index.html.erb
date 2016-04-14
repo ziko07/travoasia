@@ -74,9 +74,11 @@
 
   </div>
 
-  <div class="featured-artist-hero-container">
+  <div class="featured-artist-hero-container" style="background: url(<%= @general_settings.community_banner %>) no-repeat center center / cover">
     <div class="layout-centered-content">
-      <h1 class="entry-title">KMusic Start Up</h1>
+      <h1 class="entry-title">
+        <%= @general_settings.community_header || t('site.community_header') %>
+      </h1>
 
       <h2 style="color: #FC0072 ">See How Travosia Helps Bring These Boys Togather And Start A music Carrier</h2>
     </div>
