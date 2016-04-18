@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410063348) do
+ActiveRecord::Schema.define(version: 20160418033434) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "token",            limit: 255
@@ -438,6 +438,19 @@ ActiveRecord::Schema.define(version: 20160410063348) do
   add_index "follower_relationships", ["follower_id"], name: "index_follower_relationships_on_follower_id", using: :btree
   add_index "follower_relationships", ["person_id", "follower_id"], name: "index_follower_relationships_on_person_id_and_follower_id", unique: true, using: :btree
   add_index "follower_relationships", ["person_id"], name: "index_follower_relationships_on_person_id", using: :btree
+
+  create_table "general_settings", force: :cascade do |t|
+    t.string   "community_banner",              limit: 255
+    t.string   "community_header",              limit: 255
+    t.string   "community_sub_header",          limit: 255
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "community_banner_file_name",    limit: 255
+    t.string   "community_banner_content_type", limit: 255
+    t.integer  "community_banner_file_size",    limit: 4
+    t.datetime "community_banner_updated_at"
+    t.text     "text_under_countries",          limit: 65535
+  end
 
   create_table "invitations", force: :cascade do |t|
     t.string   "code",         limit: 255

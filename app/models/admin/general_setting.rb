@@ -2,17 +2,22 @@
 #
 # Table name: general_settings
 #
-#  id                   :integer          not null, primary key
-#  community_banner     :string(255)
-#  community_header     :string(255)
-#  community_sub_header :string(255)
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
+#  id                            :integer          not null, primary key
+#  community_banner              :string(255)
+#  community_header              :string(255)
+#  community_sub_header          :string(255)
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
+#  community_banner_file_name    :string(255)
+#  community_banner_content_type :string(255)
+#  community_banner_file_size    :integer
+#  community_banner_updated_at   :datetime
+#  text_under_countries          :text(65535)
 #
 
 class Admin::GeneralSetting < ActiveRecord::Base
   DEFAULT_BANNER = ActionController::Base.helpers.asset_path("cover_photos/community/middle_banner.png")
-  attr_accessor :community_banner_file_name, :community_banner_file_size, :community_banner_content_type
+  # attr_accessor :community_banner_file_name, :community_banner_file_size, :community_banner_content_type
 
   has_attached_file :community_banner, :default_url => DEFAULT_BANNER
 

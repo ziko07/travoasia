@@ -54,7 +54,7 @@
 
     <div class="text-centered paddingTop20">
       <!--<div class="graphic-compass">graphic</div>-->
-      <a class="" href="<%= browse_listings_path %>">Explore more studios around Asia</a>
+      <a class="" href="<%= browse_listings_path %>"><%= @general_settings.text_under_countries.present? ? @general_settings.text_under_countries : t('site.text_under_countries') %></a>
     </div>
 
   </div>
@@ -77,10 +77,10 @@
   <div class="featured-artist-hero-container" style="background: url(<%= @general_settings.community_banner %>) no-repeat center center / cover">
     <div class="layout-centered-content">
       <h1 class="entry-title">
-        <%= @general_settings.community_header || t('site.community_header') %>
+        <%= @general_settings.community_header.present? ? @general_settings.community_header : t('site.community_header') %>
       </h1>
 
-      <h2 style="color: #FC0072 ">See How Travosia Helps Bring These Boys Togather And Start A music Carrier</h2>
+      <h2 style="color: #FC0072 "><%= @general_settings.community_sub_header.present? ? @general_settings.community_sub_header : t('site.community_sub_header') %></h2>
     </div>
   </div>
 

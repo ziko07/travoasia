@@ -32,6 +32,17 @@
     </div>
     <%= form.file_field(:community_banner, :class => "title_text_field", :maxlength => "60") %>
 
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Landing Page Text Under the countries</p>
+      </div>
+    </div>
+    <%= form.text_field(:text_under_countries, :class => "title_text_field", :maxlength => "60") %>
+
+
     <div class="add-category-buttons">
       <div class="inline-button-container">
         <%= form.button 'Save' %>
