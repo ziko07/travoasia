@@ -9,7 +9,7 @@
     <div class="title-header-wrapper">
       <div class="marketplace-title-header">
         <h1>
-          <span id="listing-title" class="listing-title"> Community Profile: <%= @site_community.name %> </span>
+          <span id="listing-title" class="listing-title"> Featured Giude: <%= @site_community.name %> </span>
         </h1>
       </div>
     </div>
@@ -52,16 +52,16 @@
           </div>
 
           <div class="bio-section">
-            <h2>GENRES</h2>
+            <h2>Language Spoken and Written</h2>
 
-            <div class="content">Pop, Rock, Acoustic, Alternative</div>
+            <div class="content"><%= @site_community.language %></div>
           </div>
 
           <div class="bio-section">
-            <h2>AFFILIATED STUDIOS</h2>
+            <h2>Know more about this guide</h2>
 
             <div class="content">
-              <a href="https://listings.studiotime.io/en/listings/90326-barn-productions" target="_blank">Barn
+              <a href="<%= @site_community.travoasia_profile %>" target="_blank">Barn
                 Productions</a></div>
           </div>
         </div>
@@ -73,31 +73,32 @@
     <form class="form-layout-1" id="booking-form" data-hourly-rate="100" data-day-rate="800" data-currency="$">
 
       <div class="section no-border">
-        <div class="section-title">RATES</div>
+        <div class="section-title">OTHER INFO</div>
 
         <ul class="rate-list">
           <li class="cf">
-            <div class="item">Full Production</div>
-            <div class="rate">$1000/track</div>
+            <div class="item">Favourite Places You Can Bring The
+              Guest To</div>
+            <div class="rate"><%= @site_community.favourite_places %></div>
           </li>
           <li class="cf">
-            <div class="item">Mixing, Arranging</div>
-            <div class="rate">$250/track</div>
+            <div class="item">Can drive Guests Around the City?</div>
+            <div class="rate"><%= @site_community.drive_guests %></div>
           </li>
           <li class="cf">
-            <div class="item">Vocal Editing, Tuning</div>
-            <div class="rate">$60/track</div>
+            <div class="item">Verification</div>
+            <div class="rate"><%= @site_community.verification %></div>
           </li>
 
         </ul>
 
       </div>
 
-      <div class="section contact-button-container">
-        <div class="button-row">
-          <a href="#modal" class="btn button-1 size-plus-1 block link-talent-form">CONTACT ROB HARKNESS</a>
-        </div>
-      </div>
+      <!--<div class="section contact-button-container">-->
+        <!--<div class="button-row">-->
+          <!--<a href="#modal" class="btn button-1 size-plus-1 block link-talent-form">CONTACT <%#= @site_community.name %></a>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
       <div class="section">

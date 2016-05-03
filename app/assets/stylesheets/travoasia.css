@@ -3705,6 +3705,12 @@ select#locale-selection {
     float: left
 }
 
+.datepicker-accept-wrapper {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+
 .datepicker-end-wrapper {
     width: 45%;
     float: right

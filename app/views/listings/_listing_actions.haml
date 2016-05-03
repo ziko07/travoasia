@@ -34,7 +34,6 @@
           - translated_days_min = days.map { |day_symbol| t("datepicker.days_min.#{day_symbol}") }.to_json
           - translated_months = months.map { |day_symbol| t("datepicker.months.#{day_symbol}") }.to_json
           - translated_months_short = months.map { |day_symbol| t("datepicker.months_short.#{day_symbol}") }.to_json
-
           - content_for :extra_javascript do
             :javascript
               $.fn.datepicker.dates['#{I18n.locale}'] = {
@@ -108,7 +107,7 @@
       .row
         .col-12
           = render :partial => "listing_conversations/paypal_payment_methods", locals: { country_code: country_code }
-
+    = render :partial => 'schedule_link'
   - if is_authorized
     .listing-view-admin-links
       .listing-view-admin-link

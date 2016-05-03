@@ -52,7 +52,7 @@ Kassi::Application.configure do
   config.action_controller.action_on_unpermitted_parameters = :raise
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # if APP_CONFIG.mail_delivery_method == "sendmail"
   #   ActionMailer::Base.delivery_method = :sendmail
@@ -71,13 +71,14 @@ Kassi::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'gmail.com',
-      user_name:            'mahabubziko@gmail.com',
-      password:             '01723833145',
+      address:              'mail.travoasia.com',
+      port:                 25,
+      domain:               'www.travoasia.com',
+      user_name:            'mahabub@travoasia.com',
+      password:             '#gYax980',
       authentication:       'plain',
-      enable_starttls_auto: true  }
+      :enable_starttls_auto => true,
+      :openssl_verify_mode => 'none'  }
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
 

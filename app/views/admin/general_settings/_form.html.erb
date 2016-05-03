@@ -8,7 +8,7 @@
         <p>Community page banner image top header text</p>
       </div>
     </div>
-    <%= form.text_field(:community_header, :class => "title_text_field", required: true, :maxlength => "60") %>
+    <%= form.text_field(:community_header, :class => "title_text_field", required: true, :maxlength => "80") %>
 
     <%= form.label :community_sub_header, 'Community Banner Sub Header Text', :class => "input" %>
     <div class="info-text-container">
@@ -19,7 +19,7 @@
         <p>Community page banner image top sub header text</p>
       </div>
     </div>
-    <%= form.text_field(:community_sub_header, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.text_field(:community_sub_header, :class => "title_text_field", :maxlength => "80") %>
 
     <%= form.label :community_banner, 'Community Banner', :class => "input" %>
     <div class="info-text-container">
@@ -30,8 +30,113 @@
         <p>Community page banner image, Image size should be 1200x350px</p>
       </div>
     </div>
-    <%= form.file_field(:community_banner, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.file_field(:community_banner, :class => "title_text_field", :maxlength => "80") %>
 
+    <!--community herade start-->
+
+    <%= form.label :community_page_header_text, 'Community Page Header Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page  image top header text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_page_header_text, :class => "title_text_field", required: true, :maxlength => "80") %>
+
+
+    <%= form.label :community_page_header_sub_text, 'Community Page Header Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page  image top header text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_page_header_sub_text, :class => "title_text_field", required: true, :maxlength => "80") %>
+
+
+
+    <%= form.label :community_page_image, 'Community Page Header Image', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page banner image, Image size should be 1200x350px</p>
+      </div>
+    </div>
+    <%= form.file_field(:community_page_image, :class => "title_text_field", :maxlength => "80") %>
+    <!--community herade end-->
+
+
+    <!--community middle start-->
+
+    <%= form.label :community_page_middle_text, 'Community Page Middle Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page  image middle header text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_page_middle_text, :class => "title_text_field", required: true, :maxlength => "80") %>
+
+
+    <%= form.label :community_page_middle_sub_text, 'Community Page Middle Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page  image middle sub text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_page_middle_sub_text, :class => "title_text_field", required: true, :maxlength => "80") %>
+
+
+
+    <%= form.label :community_page_middle_image, 'Community Page Middle Image', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page middle image, Image size should be 1200x350px</p>
+      </div>
+    </div>
+    <%= form.file_field(:community_page_middle_image, :class => "title_text_field", :maxlength => "80") %>
+    <!--community herade end-->
+
+
+    <%= form.label :community_page_lower_text, 'Community Page Lower Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page  image lower header text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_page_lower_text, :class => "title_text_field", required: true, :maxlength => "80") %>
+
+
+    <%= form.label :community_page_lower_sub_text, 'Community Page lower Text', :class => "input" %>
+    <div class="info-text-container">
+      <div class="info-text-icon">
+        <i class="icon-info-sign"></i>
+      </div>
+      <div class="info-text-content">
+        <p>Community page  image lower sub text</p>
+      </div>
+    </div>
+    <%= form.text_field(:community_page_lower_sub_text, :class => "title_text_field", required: true, :maxlength => "80") %>
+
+
+    <%= form.label :community_sub_header, 'Landing Page Text Under the countries', :class => "input" %>
     <div class="info-text-container">
       <div class="info-text-icon">
         <i class="icon-info-sign"></i>
@@ -40,7 +145,7 @@
         <p>Landing Page Text Under the countries</p>
       </div>
     </div>
-    <%= form.text_field(:text_under_countries, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.text_field(:text_under_countries, :class => "title_text_field", :maxlength => "80") %>
 
 
     <div class="add-category-buttons">

@@ -188,6 +188,19 @@ class ListingsController < ApplicationController
 
     youtube_link_ids = feature_enabled?(:youtube_embeds) ? ListingViewUtils.youtube_video_ids(@listing.description) : []
 
+    transaction = Transaction.where(listing_id: @listing.id).map(&:id)
+    transaction_list = Transaction.where(listing_id: @listing.id)
+    if @listing.unit_type == :day
+      bookings = Booking.where(transaction_id: transaction)
+      if bookings.present?
+        @events = bookings.collect { |day| {id: day.id, title: 'Booked', start: day.start_on.strftime('%Y-%m-%d'),end: day.end_on.strftime('%Y-%m-%d'), allDayDefault: true} }
+      end
+    else
+      if transaction.present?
+        @events = transaction_list.collect { |day| {id: day.id, title: 'Booked', start: day.mutual_date.present? ? day.mutual_date.strftime('%Y-%m-%d') : '',end: day.mutual_date.present? ? day.mutual_date.strftime('%Y-%m-%d') : '', allDayDefault: true} }
+      end
+    end
+
     render locals: {
              form_path: form_path,
              payment_gateway: payment_gateway,

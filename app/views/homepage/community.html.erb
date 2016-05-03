@@ -1,10 +1,10 @@
 <div class="template-travoasia page-community responsive components-built">
-  <div class="hero-container" style="">
+  <div class="hero-container" style="background: url(<%= @general_settings.community_page_image %>) no-repeat center center / cover">
     <div class="layout-centered-content">
 
-      <h1 class="entry-title">Our Community of Professionals</h1>
+      <h1 class="entry-title"><%= @general_settings.community_page_header_text.present? ? @general_settings.community_page_header_text : t('site.community_page_header') %></h1>
 
-      <h2><p>Highly vetted industry professionals ready to help you with your project.</p>
+      <h2><p><%= @general_settings.community_page_header_sub_text.present? ? @general_settings.community_page_header_sub_text : t('site.community_page_header_sub') %></p>
       </h2>
       <div class="button-container" style="display:none;">
         <a href="#" class="button-1 link-talent-form">REQUEST A PROPOSAL</a>
@@ -37,19 +37,19 @@
 
   </div>
 
-  <div class="featured-artist-hero-container">
+  <div class="featured-artist-hero-container" style="background: url(<%= @general_settings.community_page_middle_image %>) no-repeat center center / cover">
     <div class="layout-centered-content">
-      <h1 class="entry-title"> KMusic Start Up</h1>
+      <h1 class="entry-title"><%= @general_settings.community_page_middle_text.present? ? @general_settings.community_page_middle_text : t('site.community_middle_header') %></h1>
 
-      <h2> See How Travosia Helps Bring These Boys Togather And Start A music Carrier</h2>
+      <h2> <%= @general_settings.community_page_middle_sub_text.present? ? @general_settings.community_page_middle_sub_text : t('site.community_page_middle_header_sub') %></h2>
     </div>
   </div>
 
   <div class="section layout-centered-content">
 
     <div class="contact-us-container">
-      <h1>Want to be featured on Studiotime?</h1>
-      Increase your exposure and become part of the hottest online music community.
+      <h1><%= @general_settings.community_page_lower_text.present? ? @general_settings.community_page_lower_text : 'Want to be featured on Studiotime?' %></h1>
+      <%= @general_settings.community_page_lower_sub_text.present? ? @general_settings.community_page_lower_sub_text : 'Increccase your exposure and become part of the hottest online music community.' %>
       <div class="button-container">
         <a class="button-1" href="https://listings.studiotime.io/en/user_feedbacks/new">CONTACT US</a>
       </div>

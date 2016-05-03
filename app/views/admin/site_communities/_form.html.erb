@@ -1,27 +1,42 @@
 <%= form_for @site_community, :html => {:multipart => true} do |form| %>
     <%= form.label :name, 'email' + "*", :class => "input" %>
-    <%= form.text_field(:email, :class => "title_text_field", required: true, :maxlength => "60") %>
+    <%= form.text_field(:email, :class => "title_text_field", required: true, :maxlength => "120") %>
 
     <%= form.label :name, 'Name' + "*", :class => "input" %>
-    <%= form.text_field(:name, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.text_field(:name, :class => "title_text_field", :maxlength => "120") %>
 
-    <%= form.label :designation, 'Designation' + "*", :class => "input" %>
-    <%= form.text_field(:designation, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.label :designation, 'Designation / Guide Living Country' + "*", :class => "input" %>
+    <%= form.text_field(:designation, :class => "title_text_field", :maxlength => "120") %>
 
-    <%= form.label :address, 'Address' + "*", :class => "input" %>
-    <%= form.text_field(:address, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.label :address, 'Career' + "*", :class => "input" %>
+    <%= form.text_field(:address, :class => "title_text_field", :maxlength => "120") %>
 
     <%= form.label :image, 'Image' + "*", :class => "input" %>
-    <%= form.file_field(:image, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.file_field(:image, :class => "title_text_field", :maxlength => "120") %>
 
-    <%= form.label :about, 'About' + "*", :class => "input" %>
+    <%= form.label :about, 'About this Guide' + "*", :class => "input" %>
     <%= form.text_area(:about, :class => "title_text_field") %>
 
-    <%= form.label :image, 'FaceBook Link' + "*", :class => "input" %>
-    <%= form.text_field(:facebook_url, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.label :facebook_url, 'FaceBook Link' + "*", :class => "input" %>
+    <%= form.text_field(:facebook_url, :class => "title_text_field", :maxlength => "120") %>
 
-    <%= form.label :image, 'Twitter Link' + "*", :class => "input" %>
-    <%= form.text_field(:twitter_url, :class => "title_text_field", :maxlength => "60") %>
+    <%= form.label :language, 'Language Spoken and Written' + "*", :class => "input" %>
+    <%= form.text_field(:language, :class => "title_text_field", :maxlength => "120") %>
+
+    <%= form.label :travoasia_profile, 'Guide’s TravoAsia profile link' + "*", :class => "input" %>
+    <%= form.text_field(:travoasia_profile, :class => "title_text_field", :maxlength => "120") %>
+
+    <%= form.label :favourite_places, 'Favourite Places You Can Bring The Guest To' + "*", :class => "input" %>
+    <%= form.text_field(:favourite_places, :class => "title_text_field", :maxlength => "120") %>
+
+    <%= form.label :drive_guests, 'Can drive Guests Around the City?' + "*", :class => "input" %>
+    <%= form.text_field(:drive_guests, :class => "title_text_field", :maxlength => "120") %>
+
+    <%= form.label :varification, 'Verification' + "*", :class => "input" %>
+    <%= form.text_field(:verification, :class => "title_text_field", :maxlength => "120") %>
+
+    <%= form.label :twitter_url, 'Twitter Link' + "*", :class => "input" %>
+    <%= form.text_field(:twitter_url, :class => "title_text_field", :maxlength => "120") %>
 
     <div class="add-category-buttons">
       <div class="inline-button-container">

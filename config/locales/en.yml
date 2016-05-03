@@ -1,7 +1,11 @@
 en:
   site:
     community_header: 'KMusic Start Up'
+    community_page_middle_header: 'KMusic Start Up'
     community_sub_header: 'See How Travosia Helps Bring These Boys Togather And Start A music Carrier'
+    community_page_middle_header_sub: 'See How Travosia Helps Bring These Boys Togather And Start A music Carrier'
+    community_page_header: 'Our Community of Professionals'
+    community_page_header_sub: 'Highly vetted industry professionals ready to help you with your project.'
     text_under_countries: 'Explore more studios around Asia'
   admin:
     categories:
@@ -1466,6 +1470,7 @@ en:
       close_listing: "Close listing"
       edit_listing: "Edit listing"
       featured_listing_request: "Request Featured Listing"
+      listing_schedule: "See listing schedule"
       make_featured_listing: "Make Featured"
       featured_listing: "Feature Listing"
       reopen_listing: "Reopen listing"

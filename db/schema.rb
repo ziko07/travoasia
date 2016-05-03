@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418033434) do
+ActiveRecord::Schema.define(version: 20160501171505) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "token",            limit: 255
@@ -440,16 +440,32 @@ ActiveRecord::Schema.define(version: 20160418033434) do
   add_index "follower_relationships", ["person_id"], name: "index_follower_relationships_on_person_id", using: :btree
 
   create_table "general_settings", force: :cascade do |t|
-    t.string   "community_banner",              limit: 255
-    t.string   "community_header",              limit: 255
-    t.string   "community_sub_header",          limit: 255
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "community_banner_file_name",    limit: 255
-    t.string   "community_banner_content_type", limit: 255
-    t.integer  "community_banner_file_size",    limit: 4
+    t.string   "community_banner",                         limit: 255
+    t.string   "community_header",                         limit: 255
+    t.string   "community_sub_header",                     limit: 255
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+    t.string   "community_banner_file_name",               limit: 255
+    t.string   "community_banner_content_type",            limit: 255
+    t.integer  "community_banner_file_size",               limit: 4
     t.datetime "community_banner_updated_at"
-    t.text     "text_under_countries",          limit: 65535
+    t.text     "text_under_countries",                     limit: 65535
+    t.string   "community_page_image",                     limit: 255
+    t.string   "community_page_middle_image",              limit: 255
+    t.string   "community_page_header_text",               limit: 255
+    t.string   "community_page_header_sub_text",           limit: 255
+    t.string   "community_page_middle_text",               limit: 255
+    t.string   "community_page_middle_sub_text",           limit: 255
+    t.string   "community_page_lower_text",                limit: 255
+    t.string   "community_page_lower_sub_text",            limit: 255
+    t.string   "community_page_image_file_name",           limit: 255
+    t.string   "community_page_image_content_type",        limit: 255
+    t.integer  "community_page_image_file_size",           limit: 4
+    t.datetime "community_page_image_updated_at"
+    t.string   "community_page_middle_image_file_name",    limit: 255
+    t.string   "community_page_middle_image_content_type", limit: 255
+    t.integer  "community_page_middle_image_file_size",    limit: 4
+    t.datetime "community_page_middle_image_updated_at"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -991,6 +1007,11 @@ ActiveRecord::Schema.define(version: 20160418033434) do
     t.string   "facebook_url",       limit: 255
     t.string   "twitter_url",        limit: 255
     t.string   "email",              limit: 255
+    t.string   "language",           limit: 255
+    t.string   "travoasia_profile",  limit: 255
+    t.string   "favourite_places",   limit: 255
+    t.string   "drive_guests",       limit: 255
+    t.string   "verification",       limit: 255
   end
 
   add_index "site_communities", ["slug"], name: "index_site_communities_on_slug", using: :btree
@@ -1060,6 +1081,7 @@ ActiveRecord::Schema.define(version: 20160418033434) do
     t.string   "delivery_method",                   limit: 31,  default: "none"
     t.integer  "shipping_price_cents",              limit: 4
     t.boolean  "deleted",                                       default: false
+    t.date     "mutual_date"
   end
 
   add_index "transactions", ["community_id", "deleted"], name: "transactions_on_cid_and_deleted", using: :btree

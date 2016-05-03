@@ -18,6 +18,11 @@
 #  facebook_url       :string(255)
 #  twitter_url        :string(255)
 #  email              :string(255)
+#  language           :string(255)
+#  travoasia_profile  :string(255)
+#  favourite_places   :string(255)
+#  drive_guests       :string(255)
+#  verification       :string(255)
 #
 # Indexes
 #

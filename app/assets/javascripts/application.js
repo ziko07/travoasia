@@ -22,6 +22,7 @@
 //= require jquery.fileupload-validate
 //= require jquery.fileupload-image
 
+
 //= require selectize-standalone.js
 //= require datepicker/bootstrap-datepicker.js
 
@@ -74,4 +75,5 @@
 //= require listing_form
 //= require radio_buttons
 //= require remodal.min
+//= require fullcalendar
 //= require_self

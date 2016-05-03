@@ -64,6 +64,6 @@ class Admin::SiteCommunitiesController < ApplicationController
   private
 
   def site_community_params
-    params.require(:admin_site_community).permit(:name,:email, :designation, :address, :image, :about, :facebook_url, :twitter_url)
+    params.require(:admin_site_community).permit!
   end
 end

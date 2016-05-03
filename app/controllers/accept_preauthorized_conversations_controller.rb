@@ -65,9 +65,13 @@ class AcceptPreauthorizedConversationsController < ApplicationController
       return
     end
 
+
     res = accept_or_reject_tx(@current_community.id, tx_id, status, message, sender_id)
 
     if res[:success]
+      transaction = Transaction.find_by_id(tx_id)
+      transaction.mutual_date = params[:mutual_date]
+      transaction.save
       flash[:notice] = success_msg(res[:flow])
       redirect_to person_transaction_path(person_id: sender_id, id: tx_id)
     else
@@ -89,6 +93,7 @@ class AcceptPreauthorizedConversationsController < ApplicationController
   end
 
   def accept_tx(community_id, tx_id, message, sender_id)
+
     TransactionService::Transaction.complete_preauthorization(community_id: community_id,
                                                               transaction_id: tx_id,
                                                               message: message,

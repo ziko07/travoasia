@@ -24,6 +24,7 @@
         %th= render partial: "layouts/sort_link", locals: { column: "last_activity", direction: sort_link_direction("last_activity"), title: t("admin.communities.transactions.headers.last_activity") }
         %th=t("admin.communities.transactions.headers.initiated_by")
         %th=t("admin.communities.transactions.headers.other_party")
+        %th= 'Mutual Date'
         %th='Action'
 
     %tbody
@@ -39,6 +40,7 @@
           %td=l(conversation[:last_activity_at], format: :short_date)
           %td=Maybe(conversation[:starter]).map { |p| link_to_unless(p[:is_deleted], p[:display_name], p[:url]) }.or_else("")
           %td=Maybe(conversation[:author]).map { |p| link_to_unless(p[:is_deleted], p[:display_name], p[:url]) }.or_else("")
+          %td=conversation[:__model][:mutual_date]
           - if (conversation[:status] == 'confirmed_by_customer' or conversation[:status] == 'canceled_by_customer' or conversation[:status] == 'paid')
             %td
               = link_to 'Accept', accept_transaction_admin_community_transaction_path(@current_community,conversation[:id], message: conversation[:conversation][:message], sender_id: conversation[:conversation][:starter_person][:id])

@@ -30,6 +30,7 @@
 #  delivery_method                   :string(31)       default("none")
 #  shipping_price_cents              :integer
 #  deleted                           :boolean          default(FALSE)
+#  mutual_date                       :date
 #
 # Indexes
 #
