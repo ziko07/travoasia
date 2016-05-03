@@ -1,10 +1,11 @@
 <% content_for :javascript do %>
-    initialize_profile_view("#{@person.username}");
+    <!--initialize_profile_view("#{@person.username}");-->
 <% end %>
 <% content_for :title_header do %>
     <h1>
     <span class="profile-title">
-      <%= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "") %>
+    "Reschedule Request List
+      <%#= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "") %>
     </span>
     </h1>
 <% end %>
@@ -15,16 +16,24 @@
         <table id="admin_members_list">
           <thead>
           <tr>
-            <th>Listing Id</th>
-            <th>Start On</th>
-            <th>End On</th>
+            <th>Listing </th>
+            <th>Requested By </th>
+            <th>Reason </th>
+            <th>Start On(Actual)</th>
+            <th>End On(Actual)</th>
+            <th>Start On(Requested)</th>
+            <th>End On(Requested)</th>
             <th>Action</th>
           </tr>
           </thead>
           <tbody>
           <% @request.each do |request| %>
               <tr>
-                <td><%= request.transaction_id %></td>
+                <td><%= get_title(request.transaction_id) %></td>
+                <td><%= request.tx.starter.given_name %></td>
+                <td><%= request.reason %></td>
+                <td><%= request.tx.booking.start_on %></td>
+                <td><%= request.tx.booking.end_on %></td>
                 <td><%= request.start_on %></td>
                 <td><%= request.end_on %></td>
                 <td>
@@ -43,7 +52,7 @@
           </tbody>
         </table>
     <% else %>
-        No site communities
+       You Don't Have any Request
     <% end %>
   </div>
 </div>

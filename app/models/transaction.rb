@@ -77,6 +77,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :starter, :class_name => "Person", :foreign_key => "starter_id"
   belongs_to :conversation
   has_many :testimonials
+  has_one :reschedule_request
 
   delegate :author, to: :listing
   delegate :title, to: :listing, prefix: true

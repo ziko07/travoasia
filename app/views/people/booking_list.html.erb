@@ -4,7 +4,8 @@
 <% content_for :title_header do %>
     <h1>
     <span class="profile-title">
-      <%= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "") %>
+      Booking List
+      <%#= @person.name(@current_community) + (@community_customization && @community_customization.storefront_label ? @community_customization.storefront_label : "") %>
     </span>
     </h1>
 <% end %>
@@ -16,8 +17,10 @@
             <thead>
             <tr>
               <th>Listing Id</th>
-              <th>Start On</th>
-              <th>End On</th>
+              <th>Start On(Actual)</th>
+              <th>End On(Actual)</th>
+              <th>Start On(Request)</th>
+              <th>End On(Request)</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -25,9 +28,11 @@
             <tbody>
             <% @bookings.each do |booking| %>
                 <tr>
-                  <td><%= booking.transaction_id %></td>
+                  <td><%= get_title(booking.transaction_id) %></td>
                   <td><%= booking.start_on %></td>
                   <td><%= booking.end_on %></td>
+                  <td><%= booking.tx.reschedule_request.start_on if booking.tx.reschedule_request.present?  %></td>
+                  <td><%= booking.tx.reschedule_request.end_on if booking.tx.reschedule_request.present? %></td>
                   <td><%= get_reschedule_status(booking.transaction_id) %></td>
                   <td>
                     <a class="reschedule-link" data-transaction-id="<%= booking.transaction_id %>" href="#">
@@ -50,11 +55,11 @@
       <div id="datepicker" data-locale="en" data-dateformat="mm/dd/yyyy" class="input-daterange input-group clearfix">
         <div class="datepicker-start-wrapper">
           <label for="From">From</label>
-          <input type="text" placeholder="mm/dd/yyyy" name="start_on" id="start-on" data-output="booking-start-output" class="input-sm form-control required">
+          <input type="text" placeholder="yyyy/mm/dd" name="start_on" id="start-on" data-output="booking-start-output" class="input-sm form-control required">
         </div>
         <div class="datepicker-end-wrapper">
           <label for="To">To</label>
-          <input type="text" placeholder="mm/dd/yyyy" name="end_on" id="end-on" data-output="booking-end-output" class="input-sm form-control required">
+          <input type="text" placeholder="yyyy/mm/dd" name="end_on" id="end-on" data-output="booking-end-output" class="input-sm form-control required">
         </div>
       </div>
 
@@ -70,8 +75,14 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        $( "#start-on" ).datepicker();
-        $( "#end-on" ).datepicker();
+        $( "#start-on" ).datepicker(
+                {
+                    format: 'yyyy/mm/dd'
+                }
+        );
+        $( "#end-on" ).datepicker( {
+            format: 'yyyy/mm/dd'
+        });
     });
 
     $( document ).ready(function() {
@@ -81,11 +92,5 @@
                 $('[data-remodal-id = modal]').remodal().open();
     });
     });
-//  function()
-//    $('.reschedule-link').click(function() {
-//        alert('test');
-//    });
-//    $(document).on('click', '.reschedule-link', function(){
-//       alert('test');
-//    });
+
 </script>

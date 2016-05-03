@@ -321,11 +321,15 @@ class PeopleController < Devise::RegistrationsController
   def reschedule_request_list
     @person = @current_user
     transaction = Transaction.where(listing_author_id: @person.id).map(&:id)
-    @request = RescheduleRequest.where(transaction_id: transaction)
+    @request = RescheduleRequest.where(transaction_id: transaction, status: 'Pending')
   end
 
   def send_reschedule_request
-     request = RescheduleRequest.new(transaction_id: params[:transaction_id],reason: params[:reason], start_on: params[:start_on], end_on: params["end_on"], status: 'Pending')
+    request = RescheduleRequest.find_or_initialize_by(transaction_id: params[:transaction_id])
+    request.reason =  params[:reason]
+    request.start_on =  params[:start_on]
+    request.end_on =  params[:end_on]
+    request.status =  'Pending'
     if request.save
       flash[:notice] = 'Reschedule Request is successfully send to owner'
     else
@@ -342,14 +346,14 @@ class PeopleController < Devise::RegistrationsController
     booking.start_on = request.start_on
     booking.end_on = request.end_on
     booking.save
-    redirect_to reschedule_request_list_person_path
+    redirect_to reschedule_request_list_person_path(@current_user)
   end
 
   def reject_reschedule_request
     request = RescheduleRequest.find_by_transaction_id(params["transaction_id"])
     request.status = 'Reject'
     request.save
-    redirect_to reschedule_request_list_person_path
+    redirect_to reschedule_request_list_person_path(@current_user)
   end
   #This checks also that email is allowed for this community
   def check_email_availability_and_validity

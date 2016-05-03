@@ -983,7 +983,7 @@ module ApplicationHelper
     if request.present?
       return request.status
     else
-      return ''
+      return 'No Request'
     end
   end
 
@@ -1031,6 +1031,19 @@ module ApplicationHelper
         js
       end
     end
+  end
+
+  def get_title(id)
+    transaction = Transaction.find_by_id(id)
+    return transaction.listing.title
+  end
+
+  def get_actual_start_on_date(transaction)
+    Booking.find_by_transaction_id(transaction).start_on
+  end
+
+  def get_actual_end_on_date(transaction)
+    Booking.find_by_transaction_id(transaction).end_on
   end
 
 
