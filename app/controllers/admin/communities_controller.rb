@@ -370,7 +370,7 @@ class Admin::CommunitiesController < ApplicationController
   end
 
   def update(model, params, path, action, &block)
-    if model.update_attributes(params)
+    if model.update_attributes(getway_params)
       flash[:notice] = t("layouts.notifications.community_updated")
       yield if block_given? #on success, call optional block
       redirect_to path
