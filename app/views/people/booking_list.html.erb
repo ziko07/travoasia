@@ -16,7 +16,7 @@
           <table id="admin_members_list">
             <thead>
             <tr>
-              <th>Listing Id</th>
+              <th>Listing</th>
               <th>Start On(Actual)</th>
               <th>End On(Actual)</th>
               <th>Start On(Request)</th>
@@ -67,7 +67,7 @@
       <br>
       <br>
       <%= hidden_field_tag 'transaction_id' %>
-      <%= submit_tag "Reschedule Request", class: 'remodal-confirm' %>
+      <button data-remodal-action="submit" class="remodal-confirm">Submit Request</button>
       <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
   <% end %>
 
