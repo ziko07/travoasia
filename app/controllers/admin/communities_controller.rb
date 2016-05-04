@@ -189,10 +189,19 @@ class Admin::CommunitiesController < ApplicationController
       return render :payment_gateways
     end
 
-    update(@current_community.payment_gateway,
-      braintree_params,
-      payment_gateways_admin_community_path(@current_community),
-      :payment_gateways)
+    if @current_community.payment_gateway.update_attributes(getway_params)
+      flash[:notice] = t("layouts.notifications.community_updated")
+      yield if block_given? #on success, call optional block
+      redirect_to payment_gateways_admin_community_path(@current_community)
+    else
+      flash.now[:error] = t("layouts.notifications.community_update_failed")
+      render :payment_gateways
+    end
+
+    # update(@current_community.payment_gateway,
+    #   braintree_params,
+    #   payment_gateways_admin_community_path(@current_community),
+    #   :payment_gateways)
   end
 
   def create_payment_gateway
@@ -370,7 +379,7 @@ class Admin::CommunitiesController < ApplicationController
   end
 
   def update(model, params, path, action, &block)
-    if model.update_attributes(getway_params)
+    if model.update_attributes(params)
       flash[:notice] = t("layouts.notifications.community_updated")
       yield if block_given? #on success, call optional block
       redirect_to path
