@@ -48,7 +48,7 @@ class Admin::SiteCommunitiesController < ApplicationController
   def profile
     @site_community = Admin::SiteCommunity.find_by_slug(params[:id])
     prepare_meta_tags(title: "Travoasia Community Profile: #{@site_community.name}",
-                      description: 'KMusic Start Up See How Travosia Helps Bring These Boys Togather And Start A music Carrier',
+                      description: 'Experince the true culture of every cities. Come join us. You will enjoy sharing your experiences and knowledges with people around the world.',
                       image: @site_community.image.url,
                       twitter: {card: @site_community.image.url})
     render layout: 'landing'
