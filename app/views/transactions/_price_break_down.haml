@@ -4,7 +4,7 @@
       %span.initiate-transaction-per-unit-label
         = t("transactions.initiate.price_per_day")
       %span.initiate-transaction-per-unit-value
-        = humanized_money_with_symbol(listing_price)
+        = number_to_currency(listing.price, unit: "USD", format: "%u %n")
 
     .initiate-transaction-booking-wrapper
       %span.initiate-transaction-booking-label
@@ -20,7 +20,7 @@
       %span.initiate-transaction-per-unit-label
         = t("transactions.price_per_quantity", unit_type: localized_unit_type)
       %span.initiate-transaction-per-unit-value
-        = humanized_money_with_symbol(listing_price)
+        = number_to_currency(listing.price, unit: "USD", format: "%u %n")
     - if quantity > 1
       .initiate-transaction-quantity-wrapper
         %span.initiate-transaction-quantity-label
@@ -33,7 +33,7 @@
       %span.initiate-transaction-sum-label
         = t("transactions.initiate.subtotal")
       %span.initiate-transaction-sum-value
-        = humanized_money_with_symbol(subtotal)
+        = number_to_currency(subtotal, unit: "USD", format: "%u %n")
 
   - if shipping_price.present?
     .initiate-transaction-shipping-price-wrapper

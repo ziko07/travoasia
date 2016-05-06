@@ -14,14 +14,14 @@
 
         %li
           %div
-            = t(".price_per_day", price: humanized_money_with_symbol(listing.price))
+            = t(".price_per_day", price: number_to_currency(listing.price, unit: "USD", format: "%u %n"))
 
     - if sum
       %p.message-sum
-        = t("conversations.show.sum", sum: humanized_money_with_symbol(sum))
+        = t("conversations.show.sum", sum: number_to_currency(sum, unit: "USD", format: "%u %n"))
     - elsif price
       %p.message-price
-        = t("conversations.show.price", price: humanized_money_with_symbol(listing.price))
+        = t("conversations.show.price", price: number_to_currency(listing.price, unit: "USD", format: "%u %n"))
 
         - if listing.quantity.present?
           = "/ #{listing.quantity}"

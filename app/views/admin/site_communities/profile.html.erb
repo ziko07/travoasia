@@ -28,12 +28,6 @@
         <h2 class="subheader"><%= @site_community.address %></h2>
 
         <div class="social-info">
-          <% if @site_community.twitter_url.present? %>
-              <a href="http://www.twitter.com/<%= @site_community.twitter_url %>" class="twitter-followers" target="_new">
-                <i class="social-icon s-twitter icon-twitter"></i> 1,342 Followers
-              </a>
-          <%end  %>
-           &nbsp;
           <% if @site_community.facebook_url.present?  %>
               <a href="http://www.facebook.com/<%= @site_community.facebook_url %>" class="facebook-likes" target="_new">
                 <i class="social-icon s-facebook icon-facebook"> </i>
@@ -61,8 +55,7 @@
             <h2>Know more about this guide</h2>
 
             <div class="content">
-              <a href="<%= @site_community.travoasia_profile %>" target="_blank">Barn
-                Productions</a></div>
+              <a href="<%= @site_community.travoasia_profile %>" target="_blank">Click Here</a></div>
           </div>
         </div>
       </div>
@@ -103,9 +96,6 @@
 
       <div class="section">
         <div class="button-row">
-          <a href="http://www.twitter.com/share?url=" class="btn button-1 size-plus-1 block black twitter twitter-share-button" data-share-message="Check out Rob Harkness on Studiotime.io http://www.studiotime.io/profile/rob-harkness/">
-            <i class="fa fa-twitter"></i>Share On Twitter
-          </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=<%= community_profile_url(@site_community.slug) %>" class="btn button-1 size-plus-1 block black-1 facebook fb-share-button" data-share-url="http://www.studiotime.io/profile/rob-harkness/">
             <i class="fa fa-facebook"></i>Share On Facebook
           </a>
