@@ -4,7 +4,7 @@
       %span.initiate-transaction-per-unit-label
         = t("transactions.initiate.price_per_day")
       %span.initiate-transaction-per-unit-value
-        = number_to_currency(listing.price, unit: "USD", format: "%u %n")
+        = number_to_currency(listing_price, unit: "USD", format: "%u %n")
 
     .initiate-transaction-booking-wrapper
       %span.initiate-transaction-booking-label
@@ -20,7 +20,7 @@
       %span.initiate-transaction-per-unit-label
         = t("transactions.price_per_quantity", unit_type: localized_unit_type)
       %span.initiate-transaction-per-unit-value
-        = number_to_currency(listing.price, unit: "USD", format: "%u %n")
+        = number_to_currency(listing_price, unit: "USD", format: "%u %n")
     - if quantity > 1
       .initiate-transaction-quantity-wrapper
         %span.initiate-transaction-quantity-label
