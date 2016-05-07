@@ -21,7 +21,7 @@
           <%= text_field_tag "q", params[:q], :placeholder => (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need"), :onkeypress => 'return noSubmitOnReturn(event)' %>
           <!--<input type="text" autocomplete="off" id="autocomplete" name="q" placeholder="<%#= (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need") %>"/>-->
 
-          <div class="dropdown" onclick="void(0)">
+          <div class="dropdown" onclick="void(0)" style="background: #ffffff;">
             <%= select_tag "transaction_type", options_for_select(@all_shapes.map { |c| [t(c[:name_tr_key]), c[:name]] }), name: "transaction_type", :class => "current-value", prompt: "All Type" %>
             <span class="dd-icon">v</span>
           </div>

@@ -71,14 +71,13 @@ Kassi::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'mail.travoasia.com',
-      port:                 25,
-      domain:               'www.travoasia.com',
-      user_name:            'mahabub@travoasia.com',
-      password:             '#gYax980',
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      user_name:            'noreplytravoasia@gmail.com',
+      password:             'travoasia',
       authentication:       'plain',
-      :enable_starttls_auto => true,
-      :openssl_verify_mode => 'none'  }
+      enable_starttls_auto: true  }
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
 
