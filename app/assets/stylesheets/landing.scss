@@ -356,17 +356,6 @@
   }
 }
 
-.graphic-white {
-  background: asset-url("f6s-logo.png",image);
-  background-size:cover;
-  box-sizing: content-box;
-  display: inline-block;
-  height: 0;
-  overflow: hidden;
-  padding: 58px 0 0;
-  width: 195px;
-}
-
 .paddingTop20 {
   padding-top: 20px;
 }
@@ -381,8 +370,7 @@
 }
 
 .graphic-google-play-white {
-  //background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll 0 -600px;
-  background: asset-url("f6s-logo.png",image);
+  background: rgba(0, 0, 0, 0) asset-url("sprint.png", image) no-repeat scroll 0 -600px;
   box-sizing: content-box;
   display: inline-block;
   height: 0;
