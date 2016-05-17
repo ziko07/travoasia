@@ -1,10 +1,12 @@
 <div class="datepicker-accept-wrapper">
   <label for="From">Mutual Date</label>
-  <input type="text" placeholder="mm/dd/yyyy" name="mutual_date" id="mutual_date" data-output="booking-start-output" class="input-sm form-control required">
+  <input type="text" placeholder="yyyy/mm/dd" name="mutual_date" id="mutual_date" data-output="booking-start-output" class="input-sm form-control required">
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        $( "#mutual_date" ).datepicker();
+        $( "#mutual_date" ).datepicker({
+            format: 'yyyy/mm/dd'
+        });
     });
 </script>

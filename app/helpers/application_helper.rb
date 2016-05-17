@@ -988,13 +988,20 @@ module ApplicationHelper
   end
 
   def facebook_likes(profile, field)
-    page_url = field == 'like_count' ? "https://www.facebook.com/#{profile}" : profile
+    if profile.present?
+      page_url = "https://www.facebook.com/#{profile}"
+    else
+      page_url = profile
+    end
+
     fql = "SELECT url, share_count, like_count, comment_count, total_count FROM link_stat WHERE url='#{page_url}'"
     uri = URI("https://api.facebook.com/method/fql.query?format=json&query=#{URI::encode(fql)}")
     data = Net::HTTP.get(uri)
     likes = JSON.parse(data)
     if likes.present?
       likes[0][field]
+    else
+      0
     end
   end
 

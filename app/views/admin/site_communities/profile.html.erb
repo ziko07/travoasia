@@ -33,6 +33,11 @@
                 <i class="social-icon s-facebook icon-facebook"> </i>
                 <%= facebook_likes(@site_community.facebook_url, 'like_count') %> Likes
               </a>
+              <%else%>
+              <a href="http://www.facebook.com/<%= @site_community.facebook_url %>" class="facebook-likes" target="_new">
+                <i class="social-icon s-facebook icon-facebook"> </i>
+                0 Likes
+              </a>
           <% end %>
         </div>
       </div>
